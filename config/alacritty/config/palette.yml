@@ -1,0 +1,124 @@
+schemes:
+  ayu_dark: &ayu
+    # Default colors
+  primary:
+    background: '#0A0E14'
+    foreground: '#B3B1AD'
+
+      # Normal colors
+    normal:
+      black: '#01060E'
+      red: '#EA6C73'
+      green: '#91B362'
+      yellow: '#F9AF4F'
+      blue: '#53BDFA'
+      magenta: '#FAE994'
+      cyan: '#90E1C6'
+      white: '#C7C7C7'
+
+        # Bright colors
+    bright:
+      black: '#686868'
+      red: '#F07178'
+      green: '#C2D94C'
+      yellow: '#FFB454'
+      blue: '#59C2FF'
+      magenta: '#FFEE99'
+      cyan: '#95E6CB'
+      white: '#FFFFFF'
+
+  nightfox: &nightfox
+    primary:
+      background: '0x192330'
+      foreground: '0xcdcecf'
+        # Normal colors
+    normal:
+      black:   '0x393b44'
+      red:     '0xc94f6d'
+      green:   '0x81b29a'
+      yellow:  '0xdbc074'
+      blue:    '0x719cd6'
+      magenta: '0x9d79d6'
+      cyan:    '0x63cdcf'
+      white:   '0xdfdfe0'
+        # Bright colors
+    bright:
+      black:   '0x575860'
+      red:     '0xd16983'
+      green:   '0x8ebaa4'
+      yellow:  '0xe0c989'
+      blue:    '0x86abdc'
+      magenta: '0xbaa1e2'
+      cyan:    '0x7ad4d6'
+      white:   '0xe4e4e5'
+    indexed_colors:
+      - { index: 16, color: '0xf4a261' }
+      - { index: 17, color: '0xd67ad2' }
+
+  onedarkpro: &onedark
+    primary:
+      background: "#282c34"
+      foreground: "#abb2bf"
+
+    normal:
+      black: "#282c34"
+      red: "#e06c75"
+      green: "#98c379"
+      yellow: "#e5c07b"
+      blue: "#61afef"
+      magenta: "#c678dd"
+      cyan: "#56b6c2"
+      white: "#abb2bf"
+
+    bright:
+      black: "#3f3f3f"
+      red: "#e06c75"
+      green: "#98c379"
+      yellow: "#e5c07b"
+      blue: "#61afef"
+      magenta: "#c678dd"
+      cyan: "#56b6c2"
+      white: "#bfc5ce"
+
+    cursor:
+      text: CellBackground
+      cursor: CellForeground # syntax-cursor-color
+
+    selection:
+      text: CellForeground
+      background: "#3e4452"
+
+  monokaiSpectrum: &monokaiSpectrum
+    primary:
+      background: "#191919"
+      foreground: "#f7f1ff"
+
+    normal:
+      black: "#525053"
+      red: "#fc618d"
+      green: "#7bd88f"
+      yellow: "#fce566"
+      blue: "#fd9353"
+      magenta: "#948ae3"
+      cyan: "#5ad4e6"
+      white: "#bab6c0"
+
+    bright:
+      black: "#69676c"
+      red: "#fc618d"
+      green: "#7bd88f"
+      yellow: "#fce566"
+      blue: "#fd9353"
+      magenta: "#948ae3"
+      cyan: "#5ad4e6"
+      white: "#f7f1ff"
+
+    cursor:
+      text: "#000000" 
+      cursor: "#f7f1ff" 
+
+    selection:
+      text: "#363537"
+      background: "#f7f1ff"
+
+colors: *monokaiSpectrum

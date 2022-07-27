@@ -1,0 +1,6 @@
+window:
+  padding:
+    x: 10
+    y: 10
+  decorations: buttonless
+  opacity: 1.0

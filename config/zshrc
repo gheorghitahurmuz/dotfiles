@@ -1,0 +1,6 @@
+DIR="${HOME}/.config/zsh"
+for _conf in "${DIR}/"*.zsh
+do
+  source "${_conf}"
+done
+unset _conf

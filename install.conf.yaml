@@ -1,0 +1,49 @@
+- defaults:
+    link:
+      create: true
+      force: true
+
+- create:
+    - ~/.config
+    - ~/Code
+
+- clean:
+    ~/:
+    ~/.config:
+      recursive: true
+
+- link:
+    ~/.config/alacritty:
+      path: config/alacritty/
+    ~/.config/nvim:
+      path: config/nvim/
+    ~/.config/yabai:
+      if: "[ `uname` = Darwin ]"
+      path: config/yabai/
+    ~/.config/skhd:
+      if: "[ `uname` = Darwin ]"
+      path: config/skhd/
+    ~/.hammerspoon:
+      if: "[ `uname` = Darwin ]"
+      path: config/hammerspoon/
+    ~/.config/starship.toml:
+      path: config/starship.toml
+    ~/.config/zsh:
+      path: config/zsh/
+    ~/.zshrc:
+      path: config/zshrc
+    ~/.tmux.conf:
+      path: config/tmux.conf
+- shell:
+    -
+      command: ./scripts/mac-general.sh
+      description: General config 
+    - 
+      command: ./scripts/mac-dock.sh
+      description: Config Dock
+    -
+      command: ./scripts/mac-ssh.sh
+      stdin: true
+      stdout: true
+      stderr: true
+      description: Config default ssh keys
