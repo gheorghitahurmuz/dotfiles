@@ -1,0 +1,22 @@
+export PATH="$HOME/.local/bin:$PATH"
+
+# Set the default text editor to vim
+export VISUAL="nvim"
+export EDITOR="nvim"
+
+# Set the default pager for reading manual pages to Neovim with a command to open the man page
+export MANPAGER="nvim +Man!"
+
+# Configure Homebrew Cask options to disable quarantine for downloaded files
+export HOMEBREW_CASK_OPTS="--no-quarantine"
+
+# Aliases
+alias vim=nvim
+alias cat=bat
+alias ls='eza --grid --color auto --icons --sort=type'
+alias ll='eza --long --color always --icons --sort=type'
+alias la='eza --grid --all --color auto --icons --sort=type'
+alias lla='eza --long --all --color auto --icons --sort=type'
+
+#Check if the "zoxide" command is available and configure it for the Zsh shell if it is
+command -v sheldon &> /dev/null && eval "$(sheldon source)"

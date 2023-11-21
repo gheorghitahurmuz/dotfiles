@@ -1,0 +1,32 @@
+[user]
+  name = {{ .name }}
+  email = {{ .email }}
+
+[color]
+	ui = auto
+
+[core]
+  editor = nvim
+  ignoreCase = false
+  fileMode = false
+	whitespace = trailing-space,space-before-tab
+
+[init]
+  defaultBranch = main
+
+[rebase]
+	autosquash = true
+	autostash = true
+
+[pull]
+  rebase = true
+
+[push]
+  autoSetupRemote = true
+
+[help]
+	autocorrect = prompt
+
+[alias]
+  # https://jordanelver.co.uk/blog/2020/06/04/fixing-commits-with-git-commit-fixup-and-git-rebase-autosquash/
+  fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"

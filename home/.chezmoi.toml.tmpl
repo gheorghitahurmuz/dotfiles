@@ -1,0 +1,20 @@
+
+{{- $choicesDeviceTypes := list "personal" "work" -}} 
+{{- $deviceType := promptChoice "What type of host are you on" $choicesDeviceTypes -}}
+
+{{- $devMachine := promptBool "devMachine" -}}
+
+{{- $name := promptString "name" -}}
+
+{{- $email := promptString "email" -}}
+
+progress = true
+
+[data]
+    deviceType = {{ $deviceType | quote }}
+    devMachine = {{ $devMachine }}
+    name = {{ $name | quote }}
+    email = {{ $email | quote }}
+
+[warnings]
+    configFileTemplateHasChanged = false

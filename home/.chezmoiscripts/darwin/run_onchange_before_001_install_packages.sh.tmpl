@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+set -eufo pipefail
+
+{{ $brews := list
+    "bat"
+    "curl"
+    "eza"
+    "fnm"
+    "fzf"
+    "git"
+    "neovim"
+    "ripgrep"
+    "starship"
+    "sheldon"
+    "zoxide"
+    "zsh"
+-}}
+
+{{ $casks := list
+    "arc"
+    "bitwarden"
+    "figma"
+    "firefox"
+    "font-fira-code"
+    "font-fira-code-nerd-font"
+    "google-chrome"
+    "kitty"
+    "raycast"
+    "visual-studio-code"
+    "warp"
+-}}
+
+{{ if eq .deviceType "personal" -}}
+{{ $casks = concat $casks (list
+    "cleanmymac"
+    "kindle"
+    "protonvpn"
+    "transmission"
+)}}
+{{ end -}}
+
+{{ if eq .deviceType "work" -}}
+{{ $casks = concat $casks (list "zoom") -}}
+{{ end -}}
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range ($brews | sortAlpha | uniq) }}
+brew "{{ . }}"
+{{ end }}
+{{ range ($casks | sortAlpha | uniq) }}
+cask "{{ . }}"
+{{ end }}
+EOF
