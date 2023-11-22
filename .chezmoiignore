@@ -1,6 +1,0 @@
-{{ if ne .chezmoi.os "darwin" }}
-.chezmoiscripts/darwin/**
-.warp
-{{ end }}
-
-debug_*
