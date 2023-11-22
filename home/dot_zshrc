@@ -20,3 +20,9 @@ alias lla='eza --long --all --color auto --icons --sort=type'
 
 #Check if the "zoxide" command is available and configure it for the Zsh shell if it is
 command -v sheldon &> /dev/null && eval "$(sheldon source)"
+
+# Load the local shell configuration if it exists
+file="$HOME/.zshrc.local"
+if [ -f ${file} ]; then
+    source ${file}
+fi
