@@ -12,5 +12,4 @@ set -eufo pipefail
      "zsh"
 -}}
 
-{{ $sudo }}apt-get update
 {{ $sudo }}apt-get install -y {{ $packages | join " " }}
