@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -eufo pipefail
+
+{{ $sudo := "sudo " -}}
+
+{{ $packages := list
+     "build-essential"
+     "curl"
+     "fzf"
+     "git"
+     "zsh"
+-}}
+
+{{ $sudo }}apt-get update
+{{ $sudo }}apt-get install -y {{ $packages | join " " }}

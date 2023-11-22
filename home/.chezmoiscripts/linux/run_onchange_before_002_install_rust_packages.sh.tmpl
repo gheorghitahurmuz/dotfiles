@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -eufo pipefail
+
+{{ $crates := list "bat"
+    "eza"
+    "fnm"
+    "ripgrep",
+    "starship"
+    "sheldon"
+    "zoxide"
+-}}
+
+command -v cargo version >/dev/null 2>&1 &&
+    {{ range ($crates | sortAlpha | uniq) }}
+    cargo install "{{ . }}" --locked
+    {{ end }}
