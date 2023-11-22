@@ -14,7 +14,6 @@ command -v cargo version >/dev/null 2>&1 || \
     "zoxide"
 -}}
 
-command -v cargo version >/dev/null 2>&1 &&
-    {{ range ($crates | sortAlpha | uniq) }}
-    cargo install "{{ . }}" --locked
-    {{ end }}
+{{ range ($crates | sortAlpha | uniq) }}
+    ~/.cargo/bin/cargo install "{{ . }}" --locked
+{{ end }}
