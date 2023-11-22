@@ -40,10 +40,6 @@ set -eufo pipefail
 )}}
 {{ end -}}
 
-{{ if eq .deviceType "work" -}}
-{{ $casks = concat $casks (list "zoom") -}}
-{{ end -}}
-
 brew bundle --no-lock --file=/dev/stdin <<EOF
 {{ range ($brews | sortAlpha | uniq) }}
 brew "{{ . }}"
