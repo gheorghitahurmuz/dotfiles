@@ -40,7 +40,7 @@
 )}}
 {{ end -}}
 
-brew bundle --no-lock --file=/dev/stdin <<EOF
+(brew bundle --no-lock --file=/dev/stdin <<EOF
 {{ range ($brews | sortAlpha | uniq) }}
 brew "{{ . }}"
 {{ end }}
@@ -48,3 +48,4 @@ brew "{{ . }}"
 cask "{{ . }}"
 {{ end }}
 EOF
+) || (echo "some packages cannot be installed")
