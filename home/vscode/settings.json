@@ -1,0 +1,100 @@
+	{
+	"files.exclude": {
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/node_modules": true,
+		"**/.git": true
+	},
+	"files.eol": "\n",
+	"search.exclude": {
+		"**/node_modules": true,
+		"**/*.code-search": true
+	},
+	// ------------------------------
+	// Theme
+	// ------------------------------
+	"workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+	"workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
+	"editor.semanticHighlighting.enabled": true,
+	// ------------------------------
+	// Font
+	// ------------------------------
+	"editor.fontFamily": "'MonoLisa', 'Dank Mono', 'Fira Code', monospace",
+	"editor.fontLigatures": "'frac' on, 'liga' on, 'calt' on, 'zero' on, 'ss01' on, 'ss02' on, 'ss06' on, 'ss07' on, 'ss08' on, 'ss09' on, 'ss11' on, 'ss12'",
+	"editor.fontSize": 14,
+	"editor.fontWeight": 400,
+	"editor.lineHeight": 0,
+	"editor.tabSize": 4,
+	// ------------------------------
+	//UI
+	// ------------------------------
+	"editor.minimap.enabled": false,
+	"editor.cursorBlinking": "phase",
+	"editor.cursorSmoothCaretAnimation": "on",
+	"editor.smoothScrolling": true,
+	"explorer.compactFolders": false,
+	"breadcrumbs.enabled": false,
+	"window.newWindowDimensions": "maximized",
+	"window.openFoldersInNewWindow": "off",
+	"window.restoreWindows": "none",
+	"window.zoomLevel": 0,
+	"workbench.sideBar.location": "right",
+	"workbench.activityBar.location": "top",
+	"workbench.tree.renderIndentGuides": "always",
+	"workbench.settings.editor": "json",
+	"workbench.startupEditor": "none",
+	"workbench.editor.closeOnFileDelete": true,
+	"workbench.editor.revealIfOpen": true,
+	"workbench.tree.indent": 14,
+	// ------------------------------
+	// Autocomplete
+	// ------------------------------
+	"editor.inlineSuggest.enabled": true,
+	"editor.tabCompletion": "on",
+	"editor.snippetSuggestions": "top",
+	// ------------------------------
+	// Brackets
+	// ------------------------------
+	"editor.bracketPairColorization.enabled": true,
+	"editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+	"editor.guides.bracketPairs": "active",
+	"editor.guides.bracketPairsHorizontal": "active",
+	// ------------------------------
+	// Formatting
+	// ------------------------------
+	"editor.formatOnSave": true,
+	"editor.formatOnSaveMode": "modifications",
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[html]": {
+		"editor.defaultFormatter": "vscode.html-language-features"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	// ------------------------------
+	// Terminal
+	// ------------------------------
+	"terminal.integrated.fontFamily": "'MonoLisa', 'Symbols Nerd Font'",
+	"terminal.integrated.tabs.enabled": false,
+	"cSpell.userWords": [
+		"chezmoi",
+		"nvim"
+	],
+}

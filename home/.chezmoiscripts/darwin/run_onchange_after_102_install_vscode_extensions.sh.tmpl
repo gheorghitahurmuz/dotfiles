@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -eufo pipefail
+
+{{ $extensions := list "donjayamanne.githistory"
+    "eamodio.gitlens"
+    "EditorConfig.EditorConfig"
+    "esbenp.prettier-vscode"
+    "monokai.theme-monokai-pro-vscode"
+    "mrmlnc.vscode-scss"
+    "sibiraj-s.vscode-scss-formatter"
+    "streetsidesoftware.code-spell-checker"
+    "usernamehw.errorlens"
+    "wayou.vscode-todo-highlight"
+-}}
+
+command -v code >/dev/null 2>&1 && \
+    {{range ($extensions | sortAlpha | uniq)}}
+    code --install-extension "{{ . }}"
+    {{end}}
