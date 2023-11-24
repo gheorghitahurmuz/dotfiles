@@ -5,3 +5,16 @@
     refreshPeriod = "672h"
     executable = true
 {{ end }}
+
+[".local/bin/zellij"]
+	type = "file"
+	refreshPeriod = "168h"
+	executable = true
+{{- if eq .chezmoi.os "darwin" }}
+	url = "https://github.com/zellij-org/zellij/releases/latest/download/zellij-{{ .arch.opt2 }}-apple-{{ .chezmoi.os }}.tar.gz"
+{{- else if eq .chezmoi.os "linux" }}
+	url = "https://github.com/zellij-org/zellij/releases/latest/download/zellij-{{ .arch.opt2 }}-unknown-{{ .chezmoi.os }}-musl.tar.gz"
+{{- end }}
+	[".local/bin/zellij".filter]
+		command = "tar"
+		args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "zellij"]
