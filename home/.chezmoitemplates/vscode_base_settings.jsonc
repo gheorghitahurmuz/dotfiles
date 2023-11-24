@@ -62,7 +62,7 @@
   // ------------------------------
   // Formatting
   // ------------------------------
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "editor.formatOnSaveMode": "modifications",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
