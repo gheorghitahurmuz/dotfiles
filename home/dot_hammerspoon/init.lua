@@ -85,7 +85,7 @@ hs.hotkey.bind({ "ctrl", "alt" }, "up", function()
 	win:setFrame(f)
 end)
 
-hs.hotkey.bind({"ctrl", "alt"}, "down", function()
+hs.hotkey.bind({ "ctrl", "alt" }, "down", function()
 	-- size focused window to bottom half of display
 	local win = hs.window.focusedWindow()
 	local f = win:frame()
@@ -98,3 +98,13 @@ hs.hotkey.bind({"ctrl", "alt"}, "down", function()
 	f.h = max.h / 2
 	win:setFrame(f)
 end)
+
+function reloadConfig(files)
+	for _, file in pairs(files) do
+		if file:sub(-4) == ".lua" then
+			hs.reload()
+		end
+	end
+end
+
+hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
