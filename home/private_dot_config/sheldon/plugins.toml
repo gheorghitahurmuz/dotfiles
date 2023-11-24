@@ -41,10 +41,6 @@ inline = 'command -v starship &> /dev/null && eval "$(starship init zsh)"'
 
 [plugins.zoxide]
 inline = 'command -v zoxide &> /dev/null && eval "$(zoxide init zsh)"'
-hooks.pre = """
-export _ZO_DATA_DIR="$HOME/.local/share"
-alias cd=z
-"""
 
 [plugins.fnm]
 inline = 'command -v fnm &> /dev/null && eval "$(fnm env --use-on-cd)"'
