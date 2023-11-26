@@ -1,4 +1,4 @@
-local terminalApplicationName = "Warp"
+--[[ local terminalApplicationName = "Warp"
 
 -- Launch of focus termainal app
 hs.hotkey.bind({ "ctrl" }, "return", function()
@@ -26,7 +26,7 @@ hs.hotkey.bind({ "ctrl" }, "return", function()
 			end)
 		end
 	end
-end)
+end) ]]
 
 -- Window management
 hs.hotkey.bind({ "ctrl", "alt" }, "left", function()
