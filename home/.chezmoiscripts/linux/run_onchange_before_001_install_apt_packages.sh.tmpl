@@ -12,6 +12,9 @@ set -eufo pipefail
      "git"
      "libfuse2"
      "zsh"
+     "dirmngr"
+     "gpg"
+     "gawk"
 -}}
 
 {{ $sudo }}apt-get install -y {{ $packages | join " " }}

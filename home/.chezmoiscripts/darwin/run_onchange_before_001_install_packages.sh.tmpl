@@ -6,7 +6,6 @@
     "bat"
     "curl"
     "eza"
-    "fnm"
     "fzf"
     "git"
     "neovim"
@@ -32,7 +31,16 @@
     "warp"
 -}}
 
+{{ if eq .deviceType "work" -}}
+{{ $brews = concat $brews (list "fnm")}}
+{{ end -}}
+
 {{ if eq .deviceType "personal" -}}
+{{ $brews = concat $brews (list
+    "gpg"
+    "gawk"
+    "libyaml"
+)}}
 {{ $casks = concat $casks (list
     "cleanmymac"
     "discord"

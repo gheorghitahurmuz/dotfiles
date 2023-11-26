@@ -9,6 +9,7 @@
 # - `sheldon remove` to remove a plugin from the config file
 #
 # See the documentation for more https://github.com/rossmacarthur/sheldon#readme
+# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
 
 shell = "zsh"
 
@@ -42,5 +43,20 @@ inline = 'command -v starship &> /dev/null && eval "$(starship init zsh)"'
 [plugins.zoxide]
 inline = 'command -v zoxide &> /dev/null && eval "$(zoxide init zsh)"'
 
+# [[ if eq .deviceType "work" -]]
 [plugins.fnm]
 inline = 'command -v fnm &> /dev/null && eval "$(fnm env --use-on-cd)"'
+# [[ end -]]
+
+# [[ if eq .deviceType "personal" -]]
+[plugins.asdf]
+inline = """
+if [ ! -d "$HOME/.asdf" ]; then
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.1
+fi
+
+source "$HOME/.asdf/asdf.sh"
+"""
+# [[ end -]]
+
+
