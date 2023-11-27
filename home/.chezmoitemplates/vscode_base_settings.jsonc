@@ -23,7 +23,7 @@
   "editor.fontLigatures": "'frac' on, 'liga' on, 'calt' on, 'zero' on, 'ss01' on, 'ss02' on, 'ss06' on, 'ss07' on, 'ss08' on, 'ss09' on, 'ss11' on, 'ss12'",
   "editor.fontSize": 14,
   "editor.fontWeight": 400,
-  "editor.lineHeight": 0,
+  "editor.lineHeight": 24,
   "editor.tabSize": 4,
   // ------------------------------
   //UI
@@ -40,7 +40,7 @@
   "window.zoomLevel": 0,
   "workbench.sideBar.location": "right",
   "workbench.activityBar.location": "top",
-  "workbench.tree.renderIndentGuides": "always",
+  "workbench.tree.renderIndentGuides": "onHover",
   "workbench.settings.editor": "json",
   "workbench.startupEditor": "none",
   "workbench.editor.closeOnFileDelete": true,
@@ -60,11 +60,12 @@
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
   "editor.guides.bracketPairs": "active",
   "editor.guides.bracketPairsHorizontal": "active",
+  "editor.guides.highlightActiveBracketPair": true,
   // ------------------------------
   // Formatting
   // ------------------------------
   "editor.formatOnSave": false,
-  "editor.formatOnSaveMode": "modifications",
+  "editor.formatOnSaveMode": "modificationsIfAvailable",
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
