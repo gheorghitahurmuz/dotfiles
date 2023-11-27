@@ -15,7 +15,7 @@
   // ------------------------------
   "workbench.colorTheme": "Night Owl",
   "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
-  "editor.semanticHighlighting.enabled": true,
+  "editor.semanticHighlighting.enabled": "configuredByTheme",
   // ------------------------------
   // Font
   // ------------------------------
