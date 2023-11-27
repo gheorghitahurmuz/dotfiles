@@ -1,4 +1,4 @@
-local current = "monokai-pro"
+local current = "night-owl"
 
 local colorschemes = {
 	["monokai-pro"] = {
