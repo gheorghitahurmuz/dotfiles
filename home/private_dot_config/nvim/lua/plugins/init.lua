@@ -24,4 +24,5 @@ require("lazy").setup({
   require("plugins.autocomplete"),
   require("plugins.format"),
   require("plugins.lint"),
+  require("plugins.utils"),
 }, {})
