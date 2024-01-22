@@ -8,10 +8,10 @@ local settings = {
   cursorline = true,
   number = true,
   relativenumber = true,
-  foldcolumn = "0",
-  foldnestmax = 0,
+  foldcolumn = "1",
   foldlevel = 99,
   foldlevelstart = 99,
+  foldenable = true,
   termguicolors = true,
   wrap = false,
   expandtab = true,
@@ -20,7 +20,7 @@ local settings = {
   shiftwidth = 2,
 }
 
-vim.opt.fillchars:append("eob: ")
+vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]] 
 
 for k, v in pairs(settings) do
   vim.opt[k] = v

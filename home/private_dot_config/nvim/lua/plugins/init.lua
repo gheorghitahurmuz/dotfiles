@@ -19,6 +19,7 @@ require("lazy").setup({
   require("plugins.telescope"),
   require("plugins.treesitter"),
   require("plugins.lsp"),
+  require("plugins.folding"),
   require("plugins.indentation"),
   require("plugins.comments"),
   require("plugins.autocomplete"),

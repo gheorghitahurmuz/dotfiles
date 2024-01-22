@@ -36,7 +36,9 @@ return {
       local lspconfig = require("lspconfig")
       local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-      local on_attach = function(_, bufnr)
+      local on_attach = function(clienr, bufnr)
+        client.server_capabilities.semanticTokensProvider = nil
+
         vim.keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", {
           noremap = true,
           silent = true,
