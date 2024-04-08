@@ -37,3 +37,4 @@
   hidden = "!git ls-files -v | grep ^S | cut -c 3-"
   # https://elijahmanor.com/byte/git-recent-branches
   recent = "!git branch --sort=-committerdate | fzf --header Checkout | xargs git checkout"
+  fomo = "!f() { git fetch origin \"$1\" && git rebase origin/\"$1\"; }; f"
