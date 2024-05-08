@@ -7,9 +7,17 @@
     "curl"
     "eza"
     "fzf"
+    "fnm"
     "git"
+    "gpg"
+    "gawk"
+    "golang"
+    "golangci-lint"
+    "libyaml"
     "neovim"
     "ripgrep"
+    "rbenv"
+    "ruby-build"
     "starship"
     "sheldon"
     "zoxide"
@@ -17,30 +25,18 @@
 -}}
 
 {{ $casks := list
-    "arc"
     "bitwarden"
     "figma"
     "firefox"
     "font-fira-code"
     "font-fira-code-nerd-font"
     "google-chrome"
-    "hammerspoon"
-    "kitty"
     "raycast"
     "visual-studio-code"
     "warp"
 -}}
 
-{{ if eq .deviceType "work" -}}
-{{ $brews = concat $brews (list "fnm")}}
-{{ end -}}
-
 {{ if eq .deviceType "personal" -}}
-{{ $brews = concat $brews (list
-    "gpg"
-    "gawk"
-    "libyaml"
-)}}
 {{ $casks = concat $casks (list
     "cleanmymac"
     "discord"

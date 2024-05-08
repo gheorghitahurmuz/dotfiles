@@ -1,0 +1,8 @@
+.bash_profile
+.bash_profile.d
+.bashrc
+.DS_Store
+.bash_history
+.node_repl_history
+.psql_history
+.viminfo

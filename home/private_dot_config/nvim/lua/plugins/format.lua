@@ -14,6 +14,7 @@ return {
           json = { "prettier" },
           yaml = { "prettier" },
           lua = { "stylua" },
+          go = { "gofumt" }
         },
       })
 

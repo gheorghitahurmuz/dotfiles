@@ -18,6 +18,7 @@ return {
           "jsonls",
           "lua_ls",
           "tsserver",
+          "gopls"
         },
 
         automatic_installation = true,
@@ -121,6 +122,11 @@ return {
         capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "html", "css", "sass", "scss" },
+      })
+
+      lspconfig["gopls"].setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
       })
 
       lspconfig["lua_ls"].setup({

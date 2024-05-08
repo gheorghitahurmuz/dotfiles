@@ -27,7 +27,7 @@ return {
 					"css",
 					"markdown",
 					"markdown_inline",
-					"bash",
+					"go",
 					"lua",
 					"vim",
 					"gitignore",

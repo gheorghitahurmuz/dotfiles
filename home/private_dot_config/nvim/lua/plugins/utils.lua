@@ -1,4 +1,5 @@
 return {
+  'tpope/vim-sleuth',
   {
     "max397574/better-escape.nvim",
     config = function()

@@ -7,13 +7,24 @@ set -eufo pipefail
     "EditorConfig.EditorConfig"
     "esbenp.prettier-vscode"
     "monokai.theme-monokai-pro-vscode"
-    "mrmlnc.vscode-scss"
     "sdras.night-owl"
     "sibiraj-s.vscode-scss-formatter"
     "streetsidesoftware.code-spell-checker"
     "usernamehw.errorlens"
     "wayou.vscode-todo-highlight"
+    "yoavbls.pretty-ts-errors"
 -}}
+
+{{ if eq .deviceType "personal" -}}
+{{ $extensions = concat $extensions (list
+    "golang.go"
+    "bradlc.vscode-tailwindcss"
+    "douglaszaltron.nunjucks-vscode-extensionpack"
+    "lokalise.i18n-ally"
+    "shopify.ruby-extensions-pack"
+    "shopify.ruby-lsp"
+)}}
+{{ end -}}
 
 command -v code >/dev/null 2>&1 && \
     {{range ($extensions | sortAlpha | uniq)}}

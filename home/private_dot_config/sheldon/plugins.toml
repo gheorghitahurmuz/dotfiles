@@ -1,0 +1,134 @@
+# `sheldon` configuration file
+# ----------------------------
+#
+# You can modify this file directly or you can use one of the following
+# `sheldon` commands which are provided to assist in editing the config file:
+#
+# - `sheldon add` to add a new plugin to the config file
+# - `sheldon edit` to open up the config file in the default editor
+# - `sheldon remove` to remove a plugin from the config file
+#
+# See the documentation for more https://github.com/rossmacarthur/sheldon#readme
+
+shell = "zsh"
+
+[plugins]
+
+[templates]
+defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+use = ["{{ name }}.zsh"]
+apply = ["defer"]
+
+[plugins.fast-syntax-highlighting]
+github = "zdharma-continuum/fast-syntax-highlighting"
+apply = ["defer"]
+
+###
+# General
+###
+
+[plugins.general]
+inline = """
+    export PATH="$HOME/.local/bin:$PATH"
+"""
+
+###
+# Packages installed externally
+###
+
+[plugins.brew]
+inline = """
+if command -v brew &> /dev/null; then
+    export HOMEBREW_CASK_OPTS="--no-quarantine"
+fi
+"""
+
+[plugins.starship]
+inline = """
+if command -v starship &> /dev/null; then
+    eval "$(starship init zsh)"
+fi
+"""
+
+[plugins.zoxide]
+inline = """
+if command -v zoxide &> /dev/null; then
+    export _ZO_DATA_DIR="$HOME/.local/share"
+    export _ZO_ECHO=1
+
+    alias cd=z
+
+    eval "$(zoxide init zsh)"
+fi
+"""
+
+[plugins.eza]
+inline = """
+if command -v eza &> /dev/null; then
+    alias ls='eza --grid --color auto --icons --sort=type'
+    alias ll='eza --long --color always --icons --sort=type'
+    alias la='eza --grid --all --color auto --icons --sort=type'
+    alias lla='eza --long --all --color auto --icons --sort=type'
+fi
+"""
+
+[plugins.bat]
+inline = """
+if command -v bat &> /dev/null; then
+    alias cat=bat
+fi
+"""
+
+[plugins.nvim]
+inline = """
+if command -v nvim &> /dev/null; then
+    export VISUAL="nvim"
+    export EDITOR="nvim"
+    export MANPAGER="nvim +Man!"
+
+    alias vim=nvim
+fi
+"""
+
+###
+# Tools for programming languages
+###
+
+[plugins.fnm]
+inline = """
+if command -v fnm &> /dev/null; then
+    eval "$(fnm env --use-on-cd --version-file-strategy recursive)"
+fi
+"""
+
+[plugins.go]
+inline = """
+if command -v go &> /dev/null; then
+    export GOPATH=$HOME/.go
+    export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+fi
+"""
+
+[plugins.ruby]
+inline = """
+if command -v rbenv &> /dev/null; then
+    eval "$(rbenv init -)"
+fi
+"""
+
+###
+# Custom local shell configuration
+###
+[plugins.custom-local-configuration]
+inline = """
+file="$HOME/.zshrc.local"
+if [ -f ${file} ]; then
+    source ${file}
+fi
+"""

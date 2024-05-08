@@ -2,8 +2,6 @@
 {{- $choicesDeviceTypes := list "personal" "work" -}} 
 {{- $deviceType := promptChoice "What type of host are you on" $choicesDeviceTypes -}}
 
-{{- $devMachine := promptBool "devMachine" -}}
-
 {{- $name := promptString "name" "Gheorghita Hurmuz" -}}
 
 {{- $email := promptString "email" "hurmuz.gheorghita@pm.me" -}}
@@ -12,18 +10,12 @@ progress = true
 
 [data]
     deviceType = {{ $deviceType | quote }}
-    devMachine = {{ $devMachine }}
     name = {{ $name | quote }}
     email = {{ $email | quote }}
 
-[data.arch]
-{{ if eq .chezmoi.arch "amd64" }}
-	opt1 = "{{ .chezmoi.arch }}"
-	opt2 = "x86_64"
-{{ else if eq .chezmoi.arch "arm64" }}
-	opt1 = "{{ .chezmoi.arch }}"
-	opt2 = "aarch64"
-{{ end }}
+[edit]
+    command = "code"
+    args = ["--wait"]
 
 [warnings]
     configFileTemplateHasChanged = false

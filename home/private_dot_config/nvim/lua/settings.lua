@@ -4,7 +4,6 @@ local globals = {
 }
 
 local settings = {
-  clipboard = "unnamed,unnamedplus",
   cursorline = true,
   number = true,
   relativenumber = true,
