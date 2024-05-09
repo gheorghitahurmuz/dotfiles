@@ -47,7 +47,7 @@
 )}}
 {{ end -}}
 
-(brew bundle --no-lock --file=/dev/stdin <<EOF
+(/opt/homebrew/bin/brew bundle --no-lock --file=/dev/stdin <<EOF
 tap "homebrew/cask-fonts"
 {{ range ($brews | sortAlpha | uniq) }}
 brew "{{ . }}"
