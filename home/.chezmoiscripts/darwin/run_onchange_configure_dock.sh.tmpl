@@ -2,6 +2,8 @@
 
 set -eufo pipefail
 
+trap 'killall Dock' EXIT
+
 # Remove all Apps from the Dock
 defaults write com.apple.dock persistent-apps -array
 
@@ -26,5 +28,3 @@ defaults write com.apple.dock persistent-apps -array-add '
         </dict>
     </dict>'
 {{ end -}}
-
-killall Dock
