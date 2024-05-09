@@ -11,7 +11,7 @@ xcode-select --install
 
 ## Install chezmoi and dotfiles on a new machine
 ```sh
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply gheorghitahurmuz`
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply gheorghitahurmuz
 ```
 
 ## Fonts:
