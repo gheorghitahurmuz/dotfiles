@@ -83,8 +83,8 @@ defaults write com.apple.finder ShowStatusBar -bool true
 defaults write com.apple.finder "FXPreferredViewStyle" -string "clmv"
 
 # Set Default Finder Location to Home Folder
-defaults write com.apple.finder NewWindowTarget -string "PfLo" && \
-defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
+defaults write com.apple.finder NewWindowTarget -string "PfLo" &&
+    defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
 
 # Keep Folders on Top in Finder
 defaults write com.apple.finder "_FXSortFoldersFirst" -bool "true"
@@ -99,8 +99,8 @@ defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write -g NSAllowContinuousSpellChecking -bool true
 
 # Save Screenshots to Desktop
-defaults write com.apple.screencapture location ~/Desktop && \
-killall SystemUIServer
+defaults write com.apple.screencapture location ~/Desktop &&
+    killall SystemUIServer
 
 # Customize Date and Time Format in Menu Bar
 defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM HH:mm:ss\""
@@ -160,7 +160,7 @@ defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 1
 defaults write com.apple.commerce AutoUpdate -bool true
 
 # Allow the App Store to reboot machine on macOS updates
-defaults write com.apple.commerce AutoUpdateRestartRequired -bool true 
+defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
 
 # Warp
 defaults write dev.warp.Warp-Stable "FontName" -string "\"FiraCode Nerd Font Mono\""
@@ -179,11 +179,10 @@ defaults write dev.warp.Warp-Stable "HasAutoOpenedWelcomeFolder" -bool true
 defaults write dev.warp.Warp-Stable "AliasExpansionBannerSeen" -bool true
 
 # Raycast
-defaults write com.raycast.macos "NSStatusItem Visible raycastIcon" -bool  false
-defaults write com.raycast.macos "onboardingCompleted" -bool  true
-defaults write com.raycast.macos "onboarding_setupHotkey" -bool  true
-defaults write com.raycast.macos "raycastGlobalHotkey" -string  "Command-49"
-defaults write com.raycast.macos "raycastPreferredWindowMode" -string  "compact"
+defaults write com.raycast.macos "NSStatusItem Visible raycastIcon" -bool false
+defaults write com.raycast.macos "onboardingCompleted" -bool true
+defaults write com.raycast.macos "onboarding_setupHotkey" -bool true
+defaults write com.raycast.macos "raycastGlobalHotkey" -string "Command-49"
+defaults write com.raycast.macos "raycastPreferredWindowMode" -string "compact"
 defaults write com.raycast.macos "raycastShouldFollowSystemAppearance" -bool true
 defaults write com.raycast.macos "showGettingStartedLink" -bool false
-
