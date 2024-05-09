@@ -7,6 +7,7 @@ command -v brew >/dev/null 2>&1 || \
 
 {{ $brews := list
     "bat"
+    "chezmoi"
     "curl"
     "eza"
     "fzf"
@@ -45,12 +46,14 @@ command -v brew >/dev/null 2>&1 || \
     "discord"
     "kindle"
     "netnewswire"
+    "proton-drive"
     "protonvpn"
     "transmission"
 )}}
 {{ end -}}
 
 (brew bundle --no-lock --file=/dev/stdin <<EOF
+tap "homebrew/cask-fonts"
 {{ range ($brews | sortAlpha | uniq) }}
 brew "{{ . }}"
 {{ end }}
