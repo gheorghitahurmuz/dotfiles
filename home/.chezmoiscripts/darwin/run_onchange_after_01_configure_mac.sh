@@ -177,6 +177,7 @@ defaults write dev.warp.Warp-Stable "Theme" -string "{\"Custom\":{\"name\":\"Nig
 defaults write dev.warp.Warp-Stable "Spacing" -string "\"Compact\""
 defaults write dev.warp.Warp-Stable "HasAutoOpenedWelcomeFolder" -bool true
 defaults write dev.warp.Warp-Stable "AliasExpansionBannerSeen" -bool true
+defaults write dev.warp.Warp-Stable "HonorPS1" -bool true
 
 # Raycast
 defaults write com.raycast.macos "NSStatusItem Visible raycastIcon" -bool false
