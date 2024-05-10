@@ -16,7 +16,7 @@ apps=(
 )
 
 for app in "${apps[@]}"; do
-  if [ -f "$app" ]; then
+  if [ -e "$app" ]; then
     defaults write com.apple.dock persistent-apps -array-add "
     <dict>
         <key>tile-data</key>
