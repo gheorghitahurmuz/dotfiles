@@ -5,10 +5,12 @@ set -eufo pipefail
 if defaults read -app Warp >/dev/null 2>&1; then
   echo "==> 📜 Configure Warp Terminal"
 
+  current_user=$(whoami)
+
   defaults write -app Warp AliasExpansionEnabled -string 'false'
   defaults write -app Warp HonorPS1 -string 'true'
   defaults write -app Warp LineHeightRatio -string '1.5'
-  defaults write -app Warp SelectedSystemThemes -string '{"light":"Light","dark":{"Custom":{"name":"Night Owl","path":"/Users/gheorghitahurmuz/.warp/themes/night_owl.yml"}}}'
+  defaults write -app Warp SelectedSystemThemes -string "{'light':'Light','dark':{'Custom':{'name':'Night Owl','path':'/Users/${current_user}/.warp/themes/night_owl.yml'}}}"
   defaults write -app Warp QuakeModeEnabled -string 'true'
   defaults write -app Warp HasAutoOpenedWelcomeFolder -bool true
   defaults write -app Warp RestoreSession -string 'false'
@@ -40,7 +42,7 @@ if defaults read -app Warp >/dev/null 2>&1; then
   defaults write -app Warp ShowChangelogAfterUpdate -string 'false'
   defaults write -app Warp SmartSelect -string 'true'
   defaults write -app Warp LineDHeightRatio -string '1.5'
-  defaults write -app Warp Theme -string '{"Custom":{"name":"Night Owl","path":"/Users/gheorghitahurmuz/.warp/themes/night_owl.yml"}}'
+  defaults write -app Warp Theme -string "{'Custom':{'name':'Night Owl','path':'/Users/${current_user}/.warp/themes/night_owl.yml'}}"
   defaults write -app Warp WorkflowsBoxOpen -string 'true'
   defaults write -app Warp UndoCloseEnabled -string 'false'
   defaults write -app Warp Notifications -string '{"mode":"Disabled","is_long_running_enabled":true,"long_running_threshold":{"secs":30,"nanos":0},"is_password_prompt_enabled":true}'

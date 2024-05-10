@@ -5,13 +5,15 @@ set -eufo pipefail
 if defaults read -app Raycast >/dev/null 2>&1; then
   echo "==> 📜 Configure Raycast"
 
+  current_user=$(whoami)
+
   defaults write -app Raycast "NSStatusItem Visible raycastIcon" -bool false
   defaults write -app Raycast onboardingCompleted -bool true
   defaults write -app Raycast onboarding_setupHotkey -bool true
   defaults write -app Raycast onboarding_showTasksProgress -bool true
-  defaults write -app Raycast permissions.folders.read:/Users/gheorghitahurmuz/Documents -bool true
-  defaults write -app Raycast permissions.folders.read:/Users/gheorghitahurmuz/Desktop -bool true
-  defaults write -app Raycast permissions.folders.read:/Users/gheorghitahurmuz/Downloads -bool true
+  defaults write -app Raycast permissions.folders.read:/Users/${current_user}/Documents -bool true
+  defaults write -app Raycast permissions.folders.read:/Users/${current_user}/Desktop -bool true
+  defaults write -app Raycast permissions.folders.read:/Users/${current_user}/Downloads -bool true
   defaults write -app Raycast permissions.folders.read:cloudStorage -bool true
   defaults write -app Raycast raycastGlobalHotkey -string Command-49
   defaults write -app Raycast showGettingStartedLink -boolean false
