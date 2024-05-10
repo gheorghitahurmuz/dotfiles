@@ -2,6 +2,8 @@
 
 set -eufo pipefail
 
+echo "==> 📜 Configure MacOs [General]"
+
 osascript -e 'tell application "System Preferences" to quit'
 
 sudo -v
@@ -161,12 +163,3 @@ defaults write com.apple.commerce AutoUpdate -bool true
 
 # Allow the App Store to reboot machine on macOS updates
 defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
-
-# Raycast
-defaults write com.raycast.macos "NSStatusItem Visible raycastIcon" -bool false
-defaults write com.raycast.macos "onboardingCompleted" -bool true
-defaults write com.raycast.macos "onboarding_setupHotkey" -bool true
-defaults write com.raycast.macos "raycastGlobalHotkey" -string "Command-49"
-defaults write com.raycast.macos "raycastPreferredWindowMode" -string "compact"
-defaults write com.raycast.macos "raycastShouldFollowSystemAppearance" -bool true
-defaults write com.raycast.macos "showGettingStartedLink" -bool false

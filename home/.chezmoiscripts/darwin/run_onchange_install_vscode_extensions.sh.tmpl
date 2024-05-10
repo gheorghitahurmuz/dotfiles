@@ -1,34 +1,28 @@
 #!/usr/bin/env bash
+# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
 
 set -eufo pipefail
 
 if command -v code >/dev/null 2>&1; then
-    {{ $extensions := list "donjayamanne.githistory"
-        "eamodio.gitlens"
-        "EditorConfig.EditorConfig"
-        "esbenp.prettier-vscode"
-        "monokai.theme-monokai-pro-vscode"
-        "sdras.night-owl"
-        "sibiraj-s.vscode-scss-formatter"
-        "streetsidesoftware.code-spell-checker"
-        "usernamehw.errorlens"
-        "wayou.vscode-todo-highlight"
-        "yoavbls.pretty-ts-errors"
-    -}}
+  echo "==> 📜 Install VS Code extensions"
 
-    {{ if eq .deviceType "personal" -}}
-    {{ $extensions = concat $extensions (list
-        "golang.go"
-        "bradlc.vscode-tailwindcss"
-        "douglaszaltron.nunjucks-vscode-extensionpack"
-        "lokalise.i18n-ally"
-        "shopify.ruby-extensions-pack"
-        "shopify.ruby-lsp"
-    )}}
-    {{ end -}}
+  code --install-extension eamodio.gitlens
+  code --install-extension EditorConfig.EditorConfig
+  code --install-extension esbenp.prettier-vscode
+  code --install-extension monokai.theme-monokai-pro-vscode
+  code --install-extension sdras.night-owl
+  code --install-extension sibiraj-s.vscode-scss-formatter
+  code --install-extension streetsidesoftware.code-spell-checker
+  code --install-extension usernamehw.errorlens
+  code --install-extension wayou.vscode-todo-highlight
+  code --install-extension yoavbls.pretty-ts-errors
 
-
-    {{range ($extensions | sortAlpha | uniq)}}
-    code --install-extension "{{ . }}"
-    {{end}}
+  # [[ if eq .deviceType "personal" ]]
+  code --install-extension golang.go
+  code --install-extension bradlc.vscode-tailwindcss
+  code --install-extension douglaszaltron.nunjucks-vscode-extensionpack
+  code --install-extension lokalise.i18n-ally
+  code --install-extension shopify.ruby-extensions-pack
+  code --install-extension shopify.ruby-lsp
+  # [[ end ]]
 fi
