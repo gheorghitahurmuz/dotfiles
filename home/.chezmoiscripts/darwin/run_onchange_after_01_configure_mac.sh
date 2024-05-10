@@ -162,23 +162,6 @@ defaults write com.apple.commerce AutoUpdate -bool true
 # Allow the App Store to reboot machine on macOS updates
 defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
 
-# Warp
-defaults write dev.warp.Warp-Stable "FontName" -string "\"FiraCode Nerd Font Mono\""
-defaults write dev.warp.Warp-Stable "FontSize" -string "14.0"
-defaults write dev.warp.Warp-Stable "LineDHeightRatio" -string "1.5"
-defaults write dev.warp.Warp-Stable "CopyOnSelect" -bool false
-defaults write dev.warp.Warp-Stable "AutocompleteSymbols" -bool false
-defaults write dev.warp.Warp-Stable "PreferMarkdownViewer" -bool false
-defaults write dev.warp.Warp-Stable "RestoreSession" -bool false
-defaults write dev.warp.Warp-Stable "SystemTheme" -bool false
-defaults write dev.warp.Warp-Stable "QuakeModeEnabled" -bool true
-defaults write dev.warp.Warp-Stable "QuakeModeSettings" -string "{\"keybinding\":{\"ctrl\":true,\"alt\":false,\"shift\":false,\"cmd\":false,\"meta\":false,\"key\":\"enter\"},\"active_pin_position\":\"Top\",\"pin_position_to_size_percentages\":{\"Bottom\":{\"width\":100,\"height\":30},\"Left\":{\"width\":40,\"height\":100},\"Top\":{\"width\":100,\"height\":50},\"Right\":{\"width\":40,\"height\":100}},\"pin_screen\":null,\"hide_window_when_unfocused\":true}"
-defaults write dev.warp.Warp-Stable "Theme" -string "{\"Custom\":{\"name\":\"Night Owl\",\"path\":\"/Users/gheorghitahurmuz/.warp/themes/night_owl.yml\"}}"
-defaults write dev.warp.Warp-Stable "Spacing" -string "\"Compact\""
-defaults write dev.warp.Warp-Stable "HasAutoOpenedWelcomeFolder" -bool true
-defaults write dev.warp.Warp-Stable "AliasExpansionBannerSeen" -bool true
-defaults write dev.warp.Warp-Stable "HonorPS1" -bool true
-
 # Raycast
 defaults write com.raycast.macos "NSStatusItem Visible raycastIcon" -bool false
 defaults write com.raycast.macos "onboardingCompleted" -bool true
