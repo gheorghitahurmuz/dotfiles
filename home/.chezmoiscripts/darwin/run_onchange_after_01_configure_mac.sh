@@ -81,15 +81,22 @@ defaults write com.apple.finder ShowPathbar -bool true
 # Show Status Bar in Finder
 defaults write com.apple.finder ShowStatusBar -bool true
 
-# Set Finder's Default View to Column View
-defaults write com.apple.finder "FXPreferredViewStyle" -string "clmv"
+# Set Finder's Default View to Icon View
+defaults write com.apple.finder "FXPreferredViewStyle" -string "icnv"
+
+# Arrange by name for icons on the desktop and in other icon views
+/usr/libexec/PlistBuddy -c "Set :FK_DefaultIconViewSettings:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist
 
 # Set Default Finder Location to Home Folder
-defaults write com.apple.finder NewWindowTarget -string "PfLo" &&
-    defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
+defaults write com.apple.finder NewWindowTarget -string 'PfHm'
 
 # Keep Folders on Top in Finder
-defaults write com.apple.finder "_FXSortFoldersFirst" -bool "true"
+defaults write com.apple.finder "_FXSortFoldersFirst" -bool true
+
+# When performing a search, search the current folder by default
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
 # Set Scrollbar Visibility to Always
 defaults write -g AppleShowScrollBars -string "Always"
@@ -101,8 +108,8 @@ defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write -g NSAllowContinuousSpellChecking -bool true
 
 # Save Screenshots to Desktop
-defaults write com.apple.screencapture location ~/Desktop &&
-    killall SystemUIServer
+mkdir -p $HOME/Screenshots
+defaults write com.apple.screencapture location $HOME/Screenshots &
 
 # Customize Date and Time Format in Menu Bar
 defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM HH:mm:ss\""
@@ -135,7 +142,7 @@ defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClic
 defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
 
 # Trackpad: Enable dragging with three finger drag
-defaults write com.apple.AppleMultitouchTrackpad "TrackpadThreeFingerDrag" -bool "true"
+defaults write com.apple.AppleMultitouchTrackpad "TrackpadThreeFingerDrag" -bool true
 
 # Enable the WebKit Developer Tools in the Mac App Store
 defaults write com.apple.appstore WebKitDeveloperExtras -bool true
@@ -163,3 +170,22 @@ defaults write com.apple.commerce AutoUpdate -bool true
 
 # Allow the App Store to reboot machine on macOS updates
 defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
+
+# Hides Tags
+defaults write com.apple.finder ShowRecentTags -bool false
+
+# Hides External Drives on Desktop
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
+
+# Hides Server on Desktop
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
+
+# Hides Shared section on SideBar
+defaults write com.apple.finder SidebarSharedSectionDisclosedState -int 0
+
+# Displays have separate Spaces
+defaults write com.apple.spaces "spans-displays" -bool true
+
+# Hide all icons
+defaults write com.apple.finder "CreateDesktop" -bool false
+
