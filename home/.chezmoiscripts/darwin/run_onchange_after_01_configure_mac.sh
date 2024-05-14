@@ -12,6 +12,7 @@ sudo -v
 sudo nvram SystemAudioVolume=" "
 
 # Disable the “Are you sure you want to open this application?” dialog
+# Stopped working on Big Sur.
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Enable Dark Mode
@@ -184,7 +185,7 @@ defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
 defaults write com.apple.finder SidebarSharedSectionDisclosedState -int 0
 
 # Displays have separate Spaces
-defaults write com.apple.spaces "spans-displays" -bool true
+defaults write com.apple.spaces "spans-displays" -bool false
 
 # Hide all icons
 defaults write com.apple.finder "CreateDesktop" -bool false
