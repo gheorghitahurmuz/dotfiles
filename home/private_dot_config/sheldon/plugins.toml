@@ -36,6 +36,8 @@ apply = ["defer"]
 [plugins.general]
 inline = """
     export PATH="$HOME/.local/bin:$PATH"
+
+    alias reload_zsh="source $HOME/.zshrc"
 """
 
 ###
