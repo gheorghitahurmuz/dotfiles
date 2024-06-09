@@ -1,46 +1,46 @@
 [user]
-  name = {{ .name }}
-  email = {{ .email }}
+    name = {{ .name }}
+    email = {{ .email }}
 
 [color]
 	ui = auto
 
 [core]
-  editor = nvim
-  ignoreCase = false
-  fileMode = false
-	whitespace = trailing-space,space-before-tab
-  autocrlf = input
+    editor = nvim
+    ignoreCase = false
+    fileMode = false
+    whitespace = trailing-space,space-before-tab
+    autocrlf = input
 
 [init]
-  defaultBranch = main
+    defaultBranch = main
 
 [branch]
-  autoSetupRebase = always
+    autoSetupRebase = always
 
 [merge]
-  conflictstyle = diff3
+    conflictstyle = diff3
 
 [rebase]
 	autosquash = true
 	autostash = true
 
 [pull]
-  rebase = true
+    rebase = true
 
 [push]
-  autoSetupRemote = true
+    autoSetupRemote = true
 
 [help]
 	autocorrect = prompt
 
 [alias]
-  # https://jordanelver.co.uk/blog/2020/06/04/fixing-commits-with-git-commit-fixup-and-git-rebase-autosquash/
-  fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
-  # https://itenium.be/blog/dev-setup/git-assume-unchanged/
-  hide = update-index --skip-worktree
-  unhide = update-index --no-skip-worktree
-  hidden = "!git ls-files -v | grep ^S | cut -c 3-"
-  # https://elijahmanor.com/byte/git-recent-branches
-  recent = "!git branch --sort=-committerdate | fzf --header Checkout | xargs git checkout"
-  fomo = "!f() { git fetch origin \"$1\" && git rebase origin/\"$1\"; }; f"
+    # https://jordanelver.co.uk/blog/2020/06/04/fixing-commits-with-git-commit-fixup-and-git-rebase-autosquash/
+    fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
+    # https://itenium.be/blog/dev-setup/git-assume-unchanged/
+    hide = update-index --skip-worktree
+    unhide = update-index --no-skip-worktree
+    hidden = "!git ls-files -v | grep ^S | cut -c 3-"
+    # https://elijahmanor.com/byte/git-recent-branches
+    recent = "!git branch --sort=-committerdate | fzf --header Checkout | xargs git checkout"
+    fomo = "!f() { git fetch origin \"$1\" && git rebase origin/\"$1\"; }; f"
