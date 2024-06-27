@@ -7,10 +7,14 @@ if defaults read -app Warp >/dev/null 2>&1; then
 
   current_user=$(whoami)
 
+  workingDirectoryConfig="{\"advanced_mode\":false,\"global\":{\"mode\":\"CustomDir\",\"custom_dir\":\"/Users/${current_user}/Code\"},\"split_pane\":{\"mode\":\"PreviousDir\",\"custom_dir\":\"\"},\"new_tab\":{\"mode\":\"PreviousDir\",\"custom_dir\":\"\"},\"new_window\":{\"mode\":\"PreviousDir\",\"custom_dir\":\"\"}}"
+  selectedSystemThemes="{\"light\":\"Light\",\"dark\":{\"Custom\":{\"name\":\"Night Owl\",\"path\":\"/Users/${current_user}/.warp/themes/night_owl.yml\"}}}"
+  theme="{\"Custom\":{\"name\":\"Night Owl\",\"path\":\"/Users/${current_user}/.warp/themes/night_owl.yml\"}}";
+
   defaults write -app Warp AliasExpansionEnabled -string 'false'
   defaults write -app Warp HonorPS1 -string 'true'
   defaults write -app Warp LineHeightRatio -string '1.5'
-  defaults write -app Warp SelectedSystemThemes -string "{'light':'Light','dark':{'Custom':{'name':'Night Owl','path':'/Users/${current_user}/.warp/themes/night_owl.yml'}}}"
+  defaults write -app Warp SelectedSystemThemes -string "${selectedSystemThemes}"
   defaults write -app Warp QuakeModeEnabled -string 'true'
   defaults write -app Warp HasAutoOpenedWelcomeFolder -bool true
   defaults write -app Warp RestoreSession -string 'false'
@@ -23,7 +27,7 @@ if defaults read -app Warp >/dev/null 2>&1; then
   defaults write -app Warp MatchNotebookToMonospaceFontSize -string 'true'
   defaults write -app Warp ActivationHotkeyEnabled -string 'false'
   defaults write -app Warp AutocompleteSymbols -string 'false'
-  defaults write -app Warp WorkingDirectoryConfig -string '{"advanced_mode":false,"global":{"mode":"HomeDir","custom_dir":""},"split_pane":{"mode":"PreviousDir","custom_dir":""},"new_tab":{"mode":"PreviousDir","custom_dir":""},"new_window":{"mode":"PreviousDir","custom_dir":""}}'
+  defaults write -app Warp WorkingDirectoryConfig -string "${workingDirectoryConfig}"
   defaults write -app Warp ReceivedReferralTheme -string '"Inactive"'
   defaults write -app Warp ShowWarningBeforeLogOut -string false
   defaults write -app Warp SystemTheme -bool false
@@ -42,7 +46,7 @@ if defaults read -app Warp >/dev/null 2>&1; then
   defaults write -app Warp ShowChangelogAfterUpdate -string 'false'
   defaults write -app Warp SmartSelect -string 'true'
   defaults write -app Warp LineDHeightRatio -string '1.5'
-  defaults write -app Warp Theme -string "{'Custom':{'name':'Night Owl','path':'/Users/${current_user}/.warp/themes/night_owl.yml'}}"
+  defaults write -app Warp Theme -string "${theme}"
   defaults write -app Warp WorkflowsBoxOpen -string 'true'
   defaults write -app Warp UndoCloseEnabled -string 'false'
   defaults write -app Warp Notifications -string '{"mode":"Disabled","is_long_running_enabled":true,"long_running_threshold":{"secs":30,"nanos":0},"is_password_prompt_enabled":true}'
