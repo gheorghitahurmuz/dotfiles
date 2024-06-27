@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eufo pipefail
+# set -eufo pipefail
 
 echo "==> 📜 Configure MacOs [General]"
 
@@ -82,13 +82,28 @@ defaults write com.apple.finder ShowPathbar -bool true
 # Show Status Bar in Finder
 defaults write com.apple.finder ShowStatusBar -bool true
 
-# Set Finder's Default View to Icon View
-defaults write com.apple.finder "FXPreferredViewStyle" -string "icnv"
+defaults write com.apple.finder FXPreferredViewStyle -string 'Nlsv'
 
-# Arrange by name for icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :FK_DefaultIconViewSettings:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist
+defaults write com.apple.finder FXArrangeGroupViewBy -string 'Name'
+defaults write com.apple.finder FXPreferredGroupBy -string 'Name'
+defaults write com.apple.finder "FK_ArrangeBy" -string 'Name'
+
+# Create the StandardViewOptions dictionary if it doesn't exist
+/usr/libexec/PlistBuddy -c "Add :StandardViewOptions dict" ~/Library/Preferences/com.apple.finder.plist 2>/dev/null
+
+# Create the ExtendedListViewSettingsV2 dictionary if it doesn't exist
+/usr/libexec/PlistBuddy -c "Add :StandardViewOptions:ExtendedListViewSettingsV2 dict" ~/Library/Preferences/com.apple.finder.plist 2>/dev/null
+
+# Set sortColumn to name
+/usr/libexec/PlistBuddy -c "Add :StandardViewOptions:ExtendedListViewSettingsV2:sortColumn string name" ~/Library/Preferences/com.apple.finder.plist 2>/dev/null || \
+/usr/libexec/PlistBuddy -c "Set :StandardViewOptions:ExtendedListViewSettingsV2:sortColumn name" ~/Library/Preferences/com.apple.finder.plist
+
+# Set arrangeBy to name
+/usr/libexec/PlistBuddy -c "Add :StandardViewOptions:ExtendedListViewSettingsV2:arrangeBy string name" ~/Library/Preferences/com.apple.finder.plist 2>/dev/null || \
+/usr/libexec/PlistBuddy -c "Set :StandardViewOptions:ExtendedListViewSettingsV2:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist
+
+# Restart Finder to apply changes
+killall Finder
 
 # Set Default Finder Location to Home Folder
 defaults write com.apple.finder NewWindowTarget -string 'PfHm'
