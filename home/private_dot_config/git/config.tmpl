@@ -44,3 +44,7 @@
     # https://elijahmanor.com/byte/git-recent-branches
     recent = "!git branch --sort=-committerdate | fzf --header Checkout | xargs git checkout"
     fomo = "!f() { git fetch origin \"$1\" && git rebase origin/\"$1\"; }; f"
+    last = log -1 HEAD --stat
+    undo = reset HEAD~1 --mixed
+    wip = !git stage --all && git ls-files --deleted -z | xargs -r0 git rm &&  git commit -m 'wip'
+    please = push --force-with-lease --force-if-includes
