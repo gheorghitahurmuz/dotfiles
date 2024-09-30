@@ -38,7 +38,7 @@ inline = """
     export PATH="$HOME/.local/bin:$PATH"
 
     alias reload_zsh="source $HOME/.zshrc"
-    alias git_root="cd $(git rev-parse --show-toplevel)"
+    alias git_root='cd $(git rev-parse --show-toplevel)'
 """
 
 ###
