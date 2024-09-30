@@ -10,3 +10,4 @@ Library/Application Support/Code/User/settings.json
 {{ end }}
 
 vscode/**
+**/.DS_Store
