@@ -2,11 +2,19 @@
 
 set -eufo pipefail
 
-if ! command -v brew >/dev/null 2>&1; then
-  echo "==> 📜 Install Homebrew"
+brew_path() {
+    if [[ $(uname -m) == "arm64" ]]; then
+        echo "/opt/homebrew/bin/brew"
+    else
+        echo "/usr/local/bin/brew"
+    fi
+}
 
-  (/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
-  eval "$(homebrew/bin/brew shellenv)"
+if [[ $(command -v brew) || -x $(brew_path) ]]; then
+    echo "Homebrew already installed"
 else
-  echo "Homebrew already installed"
+    echo "==> 📜 Install Homebrew"
+
+    (/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
+    eval "$("$(brew_path)" shellenv)"
 fi

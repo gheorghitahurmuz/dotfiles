@@ -1,7 +1,15 @@
 # chezmoi:template:left-delimiter="# [[" right-delimiter=]]
 #!/usr/bin/env bash
 
-brew=$(which brew) || /opt/homebrew/bin/brew
+brew_path() {
+    if [[ $(uname -m) == "arm64" ]]; then
+        echo "/opt/homebrew/bin/brew"
+    else
+        echo "/usr/local/bin/brew"
+    fi
+}
+
+brew=$(command -v brew || brew_path)
 
 echo "==> 📜 Install Homebrew packages"
 

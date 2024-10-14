@@ -47,7 +47,16 @@ inline = """
 
 [plugins.brew]
 inline = """
-if command -v brew &> /dev/null; then
+brew_path() {
+    if [[ $(uname -m) == "arm64" ]]; then
+        echo "/opt/homebrew/bin/brew"
+    else
+        echo "/usr/local/bin/brew"
+    fi
+}
+
+if [[ $(command -v brew) || -x $(brew_path) ]]; then
+    export PATH="/opt/homebrew/bin:$PATH"
     export HOMEBREW_CASK_OPTS="--no-quarantine"
 fi
 """
