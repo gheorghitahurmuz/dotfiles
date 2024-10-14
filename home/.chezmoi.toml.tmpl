@@ -1,5 +1,5 @@
 
-{{- $choicesDeviceTypes := list "personal" "work" -}} 
+{{- $choicesDeviceTypes := list "personal" "work" -}}
 {{- $deviceType := promptChoice "What type of host are you on" $choicesDeviceTypes -}}
 
 {{- $name := promptString "name" "Gheorghita Hurmuz" -}}
@@ -15,7 +15,7 @@ progress = true
 
 [edit]
     command = "code"
-    args = ["--wait"]
+    args = ["--new-window --wait"]
 
 [warnings]
     configFileTemplateHasChanged = false

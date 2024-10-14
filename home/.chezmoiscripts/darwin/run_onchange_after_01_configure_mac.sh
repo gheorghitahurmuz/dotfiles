@@ -15,44 +15,41 @@ sudo nvram SystemAudioVolume=" "
 # Stopped working on Big Sur.
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-# Enable Dark Mode
-defaults write NSGlobalDomain AppleInterfaceStyle Dark
-
 # Set Language to English (United States)
-defaults write NSGlobalDomain AppleLanguages -array en-US
+defaults write -g AppleLanguages -array en-US
 
 # Set Locale to en_US
-defaults write NSGlobalDomain AppleLocale en_US
+defaults write -g AppleLocale en_US
 
 # Adjust Initial Key Repeat Delay
-defaults write NSGlobalDomain InitialKeyRepeat -int 15
+defaults write -g InitialKeyRepeat -int 15
 
 # Adjust Key Repeat Rate
-defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write -g KeyRepeat -int 2
 
 # Disable Automatic Capitalization
-defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+defaults write -g NSAutomaticCapitalizationEnabled -bool false
 
 # Disable Automatic Period Substitution
-defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool false
 
 # Disable Automatic Quote Substitution
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
 
 # Disable Automatic Spelling Correction
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 
 # Disable Automatic Text Completion
-defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled -bool false
+defaults write -g NSAutomaticTextCompletionEnabled -bool false
 
 # Request Linguistic Data Assets
-defaults write NSGlobalDomain NSLinguisticDataAssetsRequested -array en en_US
+defaults write -g NSLinguisticDataAssetsRequested -array en en_US
 
 # Clear User Dictionary Replacement Items
-defaults write NSGlobalDomain NSUserDictionaryReplacementItems -array
+defaults write -g NSUserDictionaryReplacementItems -array
 
 # Disable Web Automatic Spelling Correction
-defaults write NSGlobalDomain WebAutomaticSpellingCorrectionEnabled -bool false
+defaults write -g WebAutomaticSpellingCorrectionEnabled -bool false
 
 # Disable "Always Reopen Windows" in System Preferences
 defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
@@ -67,11 +64,11 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 defaults write com.apple.controlcenter BatteryShowPercentage -bool true
 
 # Expand save panel by default
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
+defaults write -g NSNavPanelExpandedStateForSaveMode2 -bool true
 
 # Save to disk (not to iCloud) by default
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+defaults write -g NSDocumentSaveNewDocumentsToCloud -bool false
 
 # Show All File Extensions
 defaults write -g AppleShowAllExtensions -bool true
@@ -148,14 +145,14 @@ defaults write com.apple.dock showhidden -bool true
 
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults -currentHost write -g com.apple.mouse.tapBehavior -int 1
+defaults write -g com.apple.mouse.tapBehavior -int 1
 
 # Trackpad: map bottom right corner to right-click
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
-defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
-defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+defaults -currentHost write -g com.apple.trackpad.trackpadCornerClickBehavior -int 1
+defaults -currentHost write -g com.apple.trackpad.enableSecondaryClick -bool true
 
 # Trackpad: Enable dragging with three finger drag
 defaults write com.apple.AppleMultitouchTrackpad "TrackpadThreeFingerDrag" -bool true
@@ -205,3 +202,37 @@ defaults write com.apple.spaces "spans-displays" -bool false
 # Hide all icons
 defaults write com.apple.finder "CreateDesktop" -bool false
 
+# Appearance
+
+# Dark Mode
+defaults write -g AppleInterfaceStyle Dark
+
+# Accent Color: blue
+# Highlight Color: blue
+defaults write -g  AppleAccentColor -int 4
+defaults write -g  AppleAquaColorVariant -int 0
+defaults write -g  AppleHighlightColor -string "0.698039 0.843137 1.000000 Blue"
+
+# Windows management
+# https://support.apple.com/en-om/guide/mac-help/mchl9674d0b0/15.0/mac/15.0
+
+# Key Modifiers
+# ^ : Ctrl
+# $ : Shift
+# ~ : Option (Alt)
+# @ : Command (Apple)
+# # : Numeric Keypad
+defaults write -g NSUserKeyEquivalents -dict-add "Fill" -string "~^↩"
+defaults write -g NSUserKeyEquivalents -dict-add "Center" -string "~^h"
+defaults write -g NSUserKeyEquivalents -dict-add "Left" -string "~^←"
+defaults write -g NSUserKeyEquivalents -dict-add "Top" -string "~^↑"
+defaults write -g NSUserKeyEquivalents -dict-add "Right" -string "~^→"
+defaults write -g NSUserKeyEquivalents -dict-add "Bottom" -string "~^↓"
+defaults write -g NSUserKeyEquivalents -dict-add "Top Left" -string "~^u"
+defaults write -g NSUserKeyEquivalents -dict-add "Top Right" -string "~^i"
+defaults write -g NSUserKeyEquivalents -dict-add "Bottom Left" -string "~^j"
+defaults write -g NSUserKeyEquivalents -dict-add "Bottom Right" -string "@~^k"
+defaults write -g NSUserKeyEquivalents -dict-add "Left & Right" -string "@~^←"
+defaults write -g NSUserKeyEquivalents -dict-add "Top & Bottom" -string "@~^↑"
+defaults write -g NSUserKeyEquivalents -dict-add "Right & Left" -string "@~^→"
+defaults write -g NSUserKeyEquivalents -dict-add "Bottom & Top" -string "@~^↓"

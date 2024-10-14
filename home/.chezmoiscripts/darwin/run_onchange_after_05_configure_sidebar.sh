@@ -7,15 +7,14 @@
 loggedInUser=$(/bin/ls -l /dev/console | /usr/bin/awk '{ print $3 }')
 
 # Removes all sides and adds /Applications, User Desktop, Documents, Downloads, Home Folder
-if [ -e /usr/local/bin/mysides ]; then
-    mysides=$(which mysides)
-    $mysides remove all
-    $mysides add $loggedInUser file:///Users/$loggedInUser
-    $mysides add Applications file:///Applications
-    $mysides add Desktop file:///Users/$loggedInUser/Desktop
-    $mysides add Documents file:///Users/$loggedInUser/Documents
-    $mysides add Downloads file:///Users/$loggedInUser/Downloads
-    $mysides add Code file:///Users/$loggedInUser/Code
+if command -v mysides >/dev/null 2>&1; then
+    mysides remove all
+    mysides add $loggedInUser file:///Users/$loggedInUser
+    mysides add Applications file:///Applications
+    mysides add Desktop file:///Users/$loggedInUser/Desktop
+    mysides add Documents file:///Users/$loggedInUser/Documents
+    mysides add Downloads file:///Users/$loggedInUser/Downloads
+    mysides add Code file:///Users/$loggedInUser/Code
 fi
 
 killall Finder

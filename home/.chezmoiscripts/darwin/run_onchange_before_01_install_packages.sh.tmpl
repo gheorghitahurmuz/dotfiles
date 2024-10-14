@@ -1,0 +1,82 @@
+# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
+#!/usr/bin/env bash
+
+brew=$(which brew) || /opt/homebrew/bin/brew
+
+echo "==> 📜 Install Homebrew packages"
+
+$brew update
+$brew upgrade
+
+$brew bundle --no-lock --file=/dev/stdin <<EOF
+brew "bat"
+brew "bitwarden-cli"
+brew "coreutils"
+brew "curl"
+brew "eza"
+brew "ffmpeg"
+brew "findutils"
+brew "fzf"
+brew "gawk"
+brew "git"
+brew "gnu-sed"
+brew "gnu-tar"
+brew "graphviz"
+brew "grep"
+brew "gpg"
+brew "imagemagick"
+brew "jq"
+brew "mise"
+brew "moreutils"
+brew "mysides"
+brew "neovim"
+brew "openssh"
+brew "rclone"
+brew "ripgrep"
+brew "rsync"
+brew "sheldon"
+brew "starship"
+brew "tree"
+brew "wget"
+brew "zoxide"
+brew "zsh"
+
+cask "font-fira-code"
+cask "font-fira-code-nerd-font"
+
+cask "arc"
+cask "bitwarden"
+cask "figma"
+cask "firefox"
+cask "google-chrome"
+cask "visual-studio-code"
+cask "warp"
+
+# [[ if eq .deviceType "personal" ]]
+cask "cleanmymac"
+cask "discord"
+cask "kindle"
+cask "netnewswire"
+cask "protonvpn"
+cask "transmission"
+cask "parallels"
+# [[ end ]]
+
+vscode "eamodio.gitlens"
+vscode "monokai.theme-monokai-pro-vscode"
+vscode "sdras.night-owl"
+vscode "streetsidesoftware.code-spell-checker"
+vscode "usernamehw.errorlen"
+vscode "wayou.vscode-todo-highlight"
+vscode "yoavbls.pretty-ts-errors"
+
+# [[ if eq .deviceType "personal" ]]
+vscode "EditorConfig.EditorConfig"
+vscode "esbenp.prettier-vscode"
+vscode "golang.go"
+vscode "shopify.ruby-extensions-pack"
+vscode "shopify.ruby-lsp"
+# [[ end ]]
+EOF
+
+$brew cleanup

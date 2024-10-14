@@ -103,25 +103,10 @@ fi
 # Tools for programming languages
 ###
 
-[plugins.fnm]
+[plugins.mise]
 inline = """
-if command -v fnm &> /dev/null; then
-    eval "$(fnm env --use-on-cd --version-file-strategy recursive)"
-fi
-"""
-
-[plugins.go]
-inline = """
-if command -v go &> /dev/null; then
-    export GOPATH=$HOME/.go
-    export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-fi
-"""
-
-[plugins.ruby]
-inline = """
-if command -v rbenv &> /dev/null; then
-    eval "$(rbenv init -)"
+if command -v mise &> /dev/null; then
+    eval "$(/usr/local/bin/mise activate zsh)"
 fi
 """
 

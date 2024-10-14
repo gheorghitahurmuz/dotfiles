@@ -11,3 +11,5 @@ Library/Application Support/Code/User/settings.json
 
 vscode/**
 **/.DS_Store
+**/.bash_history
+**/.zsh_history

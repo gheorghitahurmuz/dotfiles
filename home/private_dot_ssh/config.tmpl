@@ -1,0 +1,11 @@
+# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
+
+HashKnownHosts no
+
+# [[- if eq .chezmoi.os "darwin" ]]
+Host *
+    IgnoreUnknown AddKeysToAgent,UseKeychain
+    AddKeysToAgent yes
+    UseKeychain yes
+    IdentityFile ~/.ssh/id_rsa
+# [[- end ]]

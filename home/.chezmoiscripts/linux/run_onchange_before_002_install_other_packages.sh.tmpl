@@ -11,12 +11,9 @@ command -v starship --version >/dev/null 2>&1 || \
 command -v sheldon --version 2>&1 || \
   (echo '⚙️  Installing Sheldon' && curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh | bash -s -- --repo rossmacarthur/sheldon --to ~/.local/bin)
 
-command -v fnm --version 2>&1 || \
-  (echo '⚙️  Installing fnm' && curl -fsSL https://fnm.vercel.app/install | bash)
-
 command -v eza --version 2>&1 || \
   {
-    mkdir -p $HOME/tmp  
+    mkdir -p $HOME/tmp
     cd $HOME/tmp
     git clone https://github.com/eza-community/eza.git
     cd eza
