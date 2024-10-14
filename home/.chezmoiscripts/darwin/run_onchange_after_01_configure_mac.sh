@@ -145,14 +145,14 @@ defaults write com.apple.dock showhidden -bool true
 
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write -g com.apple.mouse.tapBehavior -int 1
+defaults write -g -currentHost com.apple.mouse.tapBehavior -int 1
 defaults write -g com.apple.mouse.tapBehavior -int 1
 
 # Trackpad: map bottom right corner to right-click
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
-defaults -currentHost write -g com.apple.trackpad.trackpadCornerClickBehavior -int 1
-defaults -currentHost write -g com.apple.trackpad.enableSecondaryClick -bool true
+defaults write -g -currentHost com.apple.trackpad.trackpadCornerClickBehavior -int 1
+defaults write -g -currentHost com.apple.trackpad.enableSecondaryClick -bool true
 
 # Trackpad: Enable dragging with three finger drag
 defaults write com.apple.AppleMultitouchTrackpad "TrackpadThreeFingerDrag" -bool true
