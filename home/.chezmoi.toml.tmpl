@@ -5,9 +5,9 @@ progress = true
 [data]
     deviceType = # [[- promptChoice "What type of host are you on" (list "personal" "work") -]]
     cpuType = # [[- output "uname" "-m" | trim | quote  -]]
-    name = # [[- promptString "name" "Gheorghita Hurmuz" -]]
-    email = # [[- promptString "email" "hurmuz.gheorghita@pm.me" quote -]]
-    bwEmail = # [[-  promptString "bwEmail" "hurmuz.gheorghita@pm.me" -]]
+    name = # [[- promptString "name" "Gheorghita Hurmuz" | trim | quote -]]
+    email = # [[- promptString "email" "hurmuz.gheorghita@pm.me" | trim | quote -]]
+    bwEmail = # [[-  promptString "bwEmail" "hurmuz.gheorghita@pm.me" | trim | quote -]]
 
 [edit]
     command = "code"
