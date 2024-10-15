@@ -13,6 +13,9 @@ progress = true
     name = # [[ $name | quote ]]
     email = # [[ $email | quote ]]
 
+[bitwarden]
+    command = # [[ if eq .chezmoi.arch "arm64" ]] "/opt/homebrew/bin/bw" # [[ else ]] "/usr/local/bin/bw" # [[ end ]]
+
 [scriptEnv]
     BITWARDEN_EMAIL = # [[ $bwUsername | quote ]]
 
