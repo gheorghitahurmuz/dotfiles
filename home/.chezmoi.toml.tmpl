@@ -13,7 +13,9 @@ progress = true
     cpuType = # [[ output "uname" "-m" | trim | quote ]]
     name = # [[ $name | quote ]]
     email = # [[ $email | quote ]]
-    bwUsername = # [[ $bwUsername | quote ]]
+
+[scriptEnv]
+    BITWARDEN_EMAIL = # [[ $bwUsername | quote ]]
 
 [edit]
     command = "code"
