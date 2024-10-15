@@ -1,22 +1,12 @@
 # chezmoi:template:left-delimiter="# [[" right-delimiter=]]
 #!/usr/bin/env bash
 
-brew_path() {
-    if [[ $(uname -m) == "arm64" ]]; then
-        echo "/opt/homebrew/bin/brew"
-    else
-        echo "/usr/local/bin/brew"
-    fi
-}
-
-brew=$(command -v brew || brew_path)
-
 echo "==> 📜 Install Homebrew packages"
 
-$brew update
-$brew upgrade
+brew update
+brew upgrade
 
-$brew bundle --no-lock --file=/dev/stdin <<EOF
+brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "bat"
 brew "bitwarden-cli"
 brew "coreutils"
@@ -36,7 +26,6 @@ brew "imagemagick"
 brew "jq"
 brew "mise"
 brew "moreutils"
-brew "mysides"
 brew "neovim"
 brew "openssh"
 brew "rclone"
@@ -59,6 +48,7 @@ cask "firefox"
 cask "google-chrome"
 cask "visual-studio-code"
 cask "warp"
+cask "mysides"
 
 # [[ if eq .deviceType "personal" ]]
 cask "cleanmymac"
@@ -74,7 +64,7 @@ vscode "eamodio.gitlens"
 vscode "monokai.theme-monokai-pro-vscode"
 vscode "sdras.night-owl"
 vscode "streetsidesoftware.code-spell-checker"
-vscode "usernamehw.errorlen"
+vscode "usernamehw.errorlens"
 vscode "wayou.vscode-todo-highlight"
 vscode "yoavbls.pretty-ts-errors"
 
@@ -87,4 +77,4 @@ vscode "shopify.ruby-lsp"
 # [[ end ]]
 EOF
 
-$brew cleanup
+brew cleanup

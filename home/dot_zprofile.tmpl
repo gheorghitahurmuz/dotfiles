@@ -1,0 +1,5 @@
+# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
+
+# [[ if and (eq .cpuType "arm64") (chezmoi.os "darwin") ]]
+eval "$(/opt/homebrew/bin/brew shellenv)"
+# [[ end ]]

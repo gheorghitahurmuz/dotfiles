@@ -1,15 +1,3 @@
-# `sheldon` configuration file
-# ----------------------------
-#
-# You can modify this file directly or you can use one of the following
-# `sheldon` commands which are provided to assist in editing the config file:
-#
-# - `sheldon add` to add a new plugin to the config file
-# - `sheldon edit` to open up the config file in the default editor
-# - `sheldon remove` to remove a plugin from the config file
-#
-# See the documentation for more https://github.com/rossmacarthur/sheldon#readme
-
 shell = "zsh"
 
 [plugins]
@@ -47,16 +35,7 @@ inline = """
 
 [plugins.brew]
 inline = """
-brew_path() {
-    if [[ $(uname -m) == "arm64" ]]; then
-        echo "/opt/homebrew/bin/brew"
-    else
-        echo "/usr/local/bin/brew"
-    fi
-}
-
-if [[ $(command -v brew) || -x $(brew_path) ]]; then
-    export PATH="/opt/homebrew/bin:$PATH"
+if command -v brew &> /dev/null; then
     export HOMEBREW_CASK_OPTS="--no-quarantine"
 fi
 """
@@ -115,7 +94,7 @@ fi
 [plugins.mise]
 inline = """
 if command -v mise &> /dev/null; then
-    eval "$(/usr/local/bin/mise activate zsh)"
+    eval "$(mise activate zsh)"
 fi
 """
 
