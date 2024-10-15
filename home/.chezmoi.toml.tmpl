@@ -3,7 +3,7 @@
 progress = true
 
 [data]
-    deviceType = # [[- promptChoice "What type of host are you on" list "personal" "work" -]]
+    deviceType = # [[- promptChoice "What type of host are you on" (list "personal" "work") -]]
     cpuType = # [[- output "uname" "-m" | trim | quote  -]]
     name = # [[- promptString "name" "Gheorghita Hurmuz" -]]
     email = # [[- promptString "email" "hurmuz.gheorghita@pm.me" quote -]]
