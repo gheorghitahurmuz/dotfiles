@@ -1,0 +1,5 @@
+# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
+
+# [[ if eq .chezmoi.arch "arm64" ]]
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+# [[ end ]]

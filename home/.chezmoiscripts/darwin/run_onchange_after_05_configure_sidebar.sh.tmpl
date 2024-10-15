@@ -1,7 +1,10 @@
+# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
 #!/bin/bash
 # Script uses mysides ( https://github.com/mosen/mysides ) to clear the sidebar and add our prefs.
 # Our script is run by the local user in conjunction with other applescripts wrapped in an app
 # before deployment to the end-user
+
+# [[ includeTemplate "darwin/homebrew_path" ]]
 
 # Get the Username of the currently logged user
 loggedInUser=$(/bin/ls -l /dev/console | /usr/bin/awk '{ print $3 }')

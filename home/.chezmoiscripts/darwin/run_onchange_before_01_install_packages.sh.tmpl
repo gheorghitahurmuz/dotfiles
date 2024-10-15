@@ -1,14 +1,14 @@
 # chezmoi:template:left-delimiter="# [[" right-delimiter=]]
 #!/usr/bin/env bash
 
-brew=$( [[ $(uname -m) == "arm64" ]] && echo "/opt/homebrew/bin/brew" || echo "/usr/local/bin/brew" )
+# [[ includeTemplate "darwin/homebrew_path" ]]
 
 echo "==> 📜 Install Homebrew packages"
 
-$brew update
-$brew upgrade
+brew update
+brew upgrade
 
-$brew bundle --no-lock --file=/dev/stdin <<EOF
+brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "bat"
 brew "bitwarden-cli"
 brew "coreutils"
@@ -78,4 +78,4 @@ vscode "shopify.ruby-lsp"
 # [[ end ]]
 EOF
 
-$brew cleanup
+brew cleanup
