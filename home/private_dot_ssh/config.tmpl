@@ -7,5 +7,5 @@ Host *
     IgnoreUnknown AddKeysToAgent,UseKeychain
     AddKeysToAgent yes
     UseKeychain yes
-    IdentityFile ~/.ssh/id_rsa
+    IdentityFile # [[- if eq .deviceType "personal" ]] ~/.ssh/id_rsa # [[- else ]] ~/.ssh/id_ed25519 # [[- end -]]
 # [[- end ]]

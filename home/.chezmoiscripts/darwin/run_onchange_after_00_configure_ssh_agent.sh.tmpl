@@ -1,0 +1,15 @@
+# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+echo "==> 📜 Configure SSH"
+
+eval "$(ssh-agent -s)"
+
+if /usr/bin/ssh-add --apple-use-keychain "# [[- if eq .deviceType "personal" -]] $HOME/.ssh/id_rsa # [[- else -]] $HOME/.ssh/id_ed25519 # [[- end -]]"; then
+    echo "SSH key added successfully."
+else
+    echo "Failed to add SSH key."
+    exit 1
+fi
