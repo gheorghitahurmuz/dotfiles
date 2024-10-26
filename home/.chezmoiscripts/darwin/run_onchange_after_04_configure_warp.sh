@@ -6,7 +6,7 @@ echo "==> 📜 Configure Warp Terminal"
 
 current_user=$(whoami)
 
-workingDirectoryConfig="{\"advanced_mode\":false,\"global\":{\"mode\":\"CustomDir\",\"custom_dir\":\"/Users/${current_user}/Code\"},\"split_pane\":{\"mode\":\"PreviousDir\",\"custom_dir\":\"\"},\"new_tab\":{\"mode\":\"PreviousDir\",\"custom_dir\":\"\"},\"new_window\":{\"mode\":\"PreviousDir\",\"custom_dir\":\"\"}}"
+workingDirectoryConfig="{\"advanced_mode\":false,\"global\":{\"mode\":\"CustomDir\",\"custom_dir\":\"/Users/${current_user}/Developer\"},\"split_pane\":{\"mode\":\"PreviousDir\",\"custom_dir\":\"\"},\"new_tab\":{\"mode\":\"PreviousDir\",\"custom_dir\":\"\"},\"new_window\":{\"mode\":\"PreviousDir\",\"custom_dir\":\"\"}}"
 selectedSystemThemes="{\"light\":\"Light\",\"dark\":{\"Custom\":{\"name\":\"Night Owl\",\"path\":\"/Users/${current_user}/.warp/themes/night_owl.yml\"}}}"
 theme="{\"Custom\":{\"name\":\"Night Owl\",\"path\":\"/Users/${current_user}/.warp/themes/night_owl.yml\"}}";
 

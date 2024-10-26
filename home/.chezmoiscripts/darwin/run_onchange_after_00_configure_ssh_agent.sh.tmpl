@@ -3,13 +3,15 @@
 
 set -euo pipefail
 
-echo "==> 📜 Configure SSH"
+# [[ includeTemplate "log_message" . ]]
+
+_log TRACE "==> 📜 Configure SSH"
 
 eval "$(ssh-agent -s)"
 
 if /usr/bin/ssh-add --apple-use-keychain "# [[- if eq .deviceType "personal" -]] $HOME/.ssh/id_rsa # [[- else -]] $HOME/.ssh/id_ed25519 # [[- end -]]"; then
-    echo "SSH key added successfully."
+    _log TRACE "SSH key added successfully."
 else
-    echo "Failed to add SSH key."
+    _log TRACE "Failed to add SSH key."
     exit 1
 fi
