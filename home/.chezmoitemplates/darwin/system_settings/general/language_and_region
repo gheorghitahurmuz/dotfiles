@@ -1,0 +1,10 @@
+_log TRACE "==> 📜 General -> Language & Region"
+
+_log TRACE "=====> Preferred Languages"
+defaults write ".GlobalPreferences_m" AppleLanguages -array en-US ro-RO
+defaults write -globalDomain AppleLanguages -array en-US ro-RO
+
+_log TRACE "=====> Region"
+sudo systemsetup -settimezone "Europe/Bucharest" > /dev/null
+defaults write ".GlobalPreferences_m" AppleLocale -string en_US@rg=rozzzz
+defaults write -globalDomain AppleLocale -string en_US@rg=rozzzz

@@ -26,7 +26,7 @@
   "editor.lineHeight": 24,
   "editor.tabSize": 4,
   // ------------------------------
-  //UI
+  // UI
   // ------------------------------
   "editor.minimap.enabled": false,
   "editor.cursorBlinking": "phase",
@@ -70,5 +70,12 @@
   // Terminal
   // ------------------------------
   "terminal.integrated.fontFamily": "'MonoLisa', 'Symbols Nerd Font'",
-  "terminal.integrated.tabs.enabled": false
+  "terminal.integrated.tabs.enabled": false,
+  // ------------------------------
+  // File Associations for Syntax Highlighting
+  // ------------------------------
+  "files.associations": {
+    "**/.chezmoitemplates/**": "shellscript",
+    "*.sh.tmpl": "shellscript"
+  }
 }

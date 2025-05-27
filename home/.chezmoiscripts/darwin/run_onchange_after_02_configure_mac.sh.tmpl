@@ -1,25 +1,19 @@
+# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
 #!/usr/bin/env bash
 
-# set -eufo pipefail
+# [[ includeTemplate "log_message" . ]]
 
-echo "==> 📜 Configure MacOs [General]"
+# [[ includeTemplate "darwin/system_settings/_init" . ]]
 
-osascript -e 'tell application "System Preferences" to quit'
+# [[ includeTemplate "darwin/system_settings/general/software_update" . ]]
+# [[ includeTemplate "darwin/system_settings/general/language_and_region" . ]]
+# [[ includeTemplate "darwin/system_settings/accessibility/shortcut" . ]]
+# [[ includeTemplate "darwin/system_settings/appearance" . ]]
+# [[ includeTemplate "darwin/system_settings/control_center" . ]]
 
-sudo -v
+# [[ includeTemplate "darwin/system_settings/_finish" . ]]
 
-# Disable the sound effects on boot
-sudo nvram SystemAudioVolume=" "
 
-# Disable the “Are you sure you want to open this application?” dialog
-# Stopped working on Big Sur.
-defaults write com.apple.LaunchServices LSQuarantine -bool false
-
-# Set Language to English (United States)
-defaults write -g AppleLanguages -array en-US
-
-# Set Locale to en_US
-defaults write -g AppleLocale en_US
 
 # Adjust Initial Key Repeat Delay
 defaults write -g InitialKeyRepeat -int 15
@@ -202,16 +196,6 @@ defaults write com.apple.spaces "spans-displays" -bool false
 # Hide all icons
 defaults write com.apple.finder "CreateDesktop" -bool false
 
-# Appearance
-
-# Dark Mode
-defaults write -g AppleInterfaceStyle Dark
-
-# Accent Color: blue
-# Highlight Color: blue
-defaults write -g  AppleAccentColor -int 4
-defaults write -g  AppleAquaColorVariant -int 0
-defaults write -g  AppleHighlightColor -string "0.698039 0.843137 1.000000 Blue"
 
 # Windows management
 # https://support.apple.com/en-om/guide/mac-help/mchl9674d0b0/15.0/mac/15.0

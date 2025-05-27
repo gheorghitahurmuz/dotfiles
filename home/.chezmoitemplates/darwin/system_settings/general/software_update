@@ -1,0 +1,16 @@
+_log TRACE "==> 📜 General -> Software Update"
+
+_log TRACE "=====> Download new updates when available"
+defaults write com.apple.SoftwareUpdate AutomaticDownload -bool TRUE
+
+_log TRACE "=====> Install macOS updates"
+defaults write com.apple.SoftwareUpdate AutomaticallyInstallMacOSUpdates -bool TRUE
+
+_log TRACE "=====> Install application updates from the App Store"
+defaults write com.apple.commerce AutoUpdate -bool TRUE
+
+_log TRACE "=====> Install Security Responses and system files"
+defaults write com.apple.SoftwareUpdate ConfigDataInstall -bool TRUE
+defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -bool TRUE
+
+
