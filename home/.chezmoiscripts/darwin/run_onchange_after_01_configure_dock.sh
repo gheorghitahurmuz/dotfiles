@@ -10,7 +10,7 @@ trap 'killall Dock' EXIT
 defaults write com.apple.dock persistent-apps -array
 
 apps=(
-  "/Applications/Arc.app"
+  "/Applications/Google Chrome.app"
   "/Applications/Visual Studio Code.app"
   "/Applications/Warp.app"
 )

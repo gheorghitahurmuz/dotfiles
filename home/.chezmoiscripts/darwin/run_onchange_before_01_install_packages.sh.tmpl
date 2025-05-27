@@ -9,7 +9,7 @@ _log TRACE "==> 📜 Install Homebrew packages"
 brew update
 brew upgrade
 
-brew bundle --no-lock --file=/dev/stdin <<EOF
+brew bundle --file=/dev/stdin <<EOF
 brew "bat"
 brew "bitwarden-cli"
 brew "chezmoi"
@@ -48,7 +48,6 @@ brew "zsh"
 cask "font-fira-code"
 cask "font-fira-code-nerd-font"
 
-cask "arc"
 cask "bitwarden"
 cask "figma"
 cask "firefox"
