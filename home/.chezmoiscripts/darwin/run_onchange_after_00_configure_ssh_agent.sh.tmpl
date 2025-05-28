@@ -9,7 +9,7 @@ _log TRACE "==> 📜 Configure SSH"
 
 eval "$(ssh-agent -s)"
 
-# [[- if eq .deviceType "work" -]]
+# [[- if eq .deviceType "work" ]]
 if [ -e ~/.ssh/id_rsa.pub ]; then
     mv ~/.ssh/id_rsa.pub ~/.ssh/id_ed25519.pub
     mv ~/.ssh/id_rsa ~/.ssh/id_ed25519
