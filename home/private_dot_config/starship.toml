@@ -1,0 +1,9 @@
+add_newline = true
+
+continuation_prompt = '▶▶ '
+
+[line_break]
+disabled = true
+
+[cmd_duration]
+disabled = true

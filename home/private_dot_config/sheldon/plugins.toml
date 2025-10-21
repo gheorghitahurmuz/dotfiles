@@ -1,0 +1,193 @@
+########################################
+# Base Configuration
+########################################
+
+shell = "zsh"
+
+########################################
+# Templates
+########################################
+
+[templates]
+defer = """
+{{ hooks?.pre | nl }}
+{% for file in files %}
+zsh-defer source "{{ file }}"
+{% endfor %}
+{{ hooks?.post | nl }}
+"""
+
+########################################
+# Core Plugins
+########################################
+
+[plugins]
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+apply = ["source"]
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+use = ["{{ name }}.zsh"]
+apply = ["defer"]
+
+[plugins.fast-syntax-highlighting]
+github = "zdharma-continuum/fast-syntax-highlighting"
+apply = ["defer"]
+
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+apply = ["defer"]
+
+[plugins.zsh-autopair]
+github = "hlissner/zsh-autopair"
+apply = ["defer"]
+
+[plugins.compinit]
+inline = 'autoload -Uz compinit && zsh-defer compinit'
+
+
+########################################
+# General Environment
+########################################
+
+[plugins.general]
+inline = """
+function _general() {
+    setopt HIST_EXPIRE_DUPS_FIRST
+    setopt HIST_FIND_NO_DUPS
+    setopt HIST_IGNORE_ALL_DUPS
+    setopt HIST_IGNORE_DUPS
+    setopt HIST_REDUCE_BLANKS
+    setopt HIST_SAVE_NO_DUPS
+    setopt HIST_VERIFY
+    setopt INC_APPEND_HISTORY
+    setopt INTERACTIVE_COMMENTS
+    setopt SHARE_HISTORY
+
+    export PATH="$HOME/.local/bin:$PATH"
+    alias reload_zsh="source $HOME/.zshrc"
+    alias git_root='cd $(git rev-parse --show-toplevel)'
+}
+zsh-defer _general
+"""
+
+[plugins.lang]
+inline = """
+function _lang() {
+    export LANG='en_US.UTF-8'
+}
+zsh-defer _lang
+"""
+
+
+########################################
+# External Tools
+########################################
+
+[plugins.brew]
+inline = """
+function _brew() {
+    if command -v brew &> /dev/null; then
+        export HOMEBREW_CASK_OPTS="--no-quarantine"
+    fi
+}
+zsh-defer _brew
+"""
+
+[plugins.starship]
+inline = """
+function _starship() {
+    if command -v starship &> /dev/null; then
+        eval "$(starship init zsh)"
+    fi
+}
+_starship
+"""
+
+[plugins.zoxide]
+inline = """
+function _zoxide() {
+    if command -v zoxide &> /dev/null; then
+        export _ZO_DATA_DIR="$HOME/.local/share"
+        export _ZO_ECHO=1
+        zstyle ':autocomplete:recent-dirs' backend zoxide
+        alias cd=z
+        eval "$(zoxide init zsh)"
+    fi
+}
+zsh-defer _zoxide
+"""
+
+[plugins.eza]
+inline = """
+function _eza() {
+    if command -v eza &> /dev/null; then
+        alias ls='eza --grid --color auto --icons --sort=type'
+        alias ll='eza --long --color always --icons --sort=type'
+        alias la='eza --grid --all --color auto --icons --sort=type'
+        alias lla='eza --long --all --color auto --icons --sort=type'
+    fi
+}
+zsh-defer _eza
+"""
+
+[plugins.bat]
+inline = """
+function _bat() {
+    if command -v bat &> /dev/null; then
+        alias cat=bat
+    fi
+}
+zsh-defer _bat
+"""
+
+[plugins.nvim]
+inline = """
+function _nvim() {
+    if command -v nvim &> /dev/null; then
+        export VISUAL="nvim"
+        export EDITOR="nvim"
+        export MANPAGER="nvim +Man!"
+        alias vim=nvim
+    fi
+}
+zsh-defer _nvim
+"""
+
+
+########################################
+# Programming Tools
+########################################
+
+[plugins.mise]
+inline = """
+function _mise() {
+    if command -v mise &> /dev/null; then
+        if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+            eval "$(mise activate zsh --shims)"
+        else
+            eval "$(mise activate zsh)"
+        fi
+    fi
+}
+zsh-defer _mise
+"""
+
+
+########################################
+# Custom Local Configuration
+########################################
+
+[plugins.custom-local-configuration]
+inline = """
+function _custom_config() {
+    local file="$HOME/.zshrc.local"
+    if [[ -f "$file" ]]; then
+        source "$file"
+    fi
+}
+zsh-defer _custom_config
+"""
+

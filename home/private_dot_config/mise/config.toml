@@ -1,0 +1,14 @@
+[tools]
+node = 'latest'
+python = 'latest'
+ruby = 'latest'
+go = 'latest'
+uv = "latest"
+
+[settings]
+not_found_auto_install = true
+go_set_goroot = false
+go_set_gopath = false
+
+[settings.ruby]
+ruby_install = true

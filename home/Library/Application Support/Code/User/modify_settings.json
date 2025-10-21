@@ -1,0 +1,10 @@
+/* chezmoi:modify-template */
+/* chezmoi:template:left-delimiter="# [[" right-delimiter="]]" */
+# [[- $vs_code_base_settings := fromJsonc (includeTemplate "vscode_base_settings.jsonc") | toPrettyJson -]]
+# [[- $mergeJsonOperator := printf ". + %s" $vs_code_base_settings -]]
+# [[- if not (eq .chezmoi.stdin "") -]]
+# [[- fromJsonc .chezmoi.stdin | jq $mergeJsonOperator | first | toPrettyJson -]]
+# [[- else -]]
+# [[- $vs_code_base_settings -]]
+# [[- end ]]
+
