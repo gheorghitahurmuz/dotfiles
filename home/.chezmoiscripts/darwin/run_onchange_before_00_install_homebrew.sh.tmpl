@@ -1,0 +1,13 @@
+# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
+#!/usr/bin/env bash
+
+set -eufo pipefail
+
+# [[ includeTemplate "log_message" . ]]
+# [[ includeTemplate "darwin/homebrew_path" . ]]
+
+if ! command -v brew >/dev/null 2>&1; then
+  _log TRACE "==> 📜 Install Homebrew"
+
+  (/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
+fi

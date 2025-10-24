@@ -1,0 +1,4 @@
+# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
+# [[- if eq .chezmoi.arch "arm64" -]]
+eval "$(/opt/homebrew/bin/brew shellenv)"
+# [[- end -]]

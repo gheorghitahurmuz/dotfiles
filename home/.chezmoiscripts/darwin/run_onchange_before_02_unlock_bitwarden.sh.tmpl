@@ -1,0 +1,12 @@
+# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
+#!/usr/bin/env bash
+
+set -eufo pipefail
+
+# [[ includeTemplate "log_message" . ]]
+# [[ includeTemplate "darwin/homebrew_path" . ]]
+
+_log TRACE "==> 📜 Unlock Bitwarden"
+
+bw login "$BITWARDEN_EMAIL" --raw --cleanexit
+

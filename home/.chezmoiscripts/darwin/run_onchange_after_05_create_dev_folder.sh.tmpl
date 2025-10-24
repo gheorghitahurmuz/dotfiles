@@ -1,0 +1,10 @@
+# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# [[ includeTemplate "log_message" . ]]
+
+_log TRACE "==> 📜 Create Developer Directory"
+
+mkdir -p "$HOME/Developer"

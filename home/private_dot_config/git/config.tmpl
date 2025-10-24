@@ -20,6 +20,9 @@
 [branch]
     autoSetupRebase = always
 
+[merge]
+    conflictstyle = diff3
+
 [rebase]
 	autosquash = true
 	autostash = true
@@ -33,6 +36,11 @@
 [help]
 	autocorrect = prompt
 
+[credential]
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+
 [alias]
     # https://jordanelver.co.uk/blog/2020/06/04/fixing-commits-with-git-commit-fixup-and-git-rebase-autosquash/
     fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
@@ -43,4 +51,7 @@
     # https://elijahmanor.com/byte/git-recent-branches
     recent = "!git branch --sort=-committerdate | fzf --header Checkout | xargs git checkout"
     fomo = "!f() { git fetch origin \"$1\" && git rebase origin/\"$1\"; }; f"
+    last = log -1 HEAD --stat
+    undo = reset HEAD~1 --mixed
     wip = !git stage --all && git ls-files --deleted -z | xargs -r0 git rm &&  git commit -m 'wip'
+    please = push --force-with-lease --force-if-includes

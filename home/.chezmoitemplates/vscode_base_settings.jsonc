@@ -1,0 +1,83 @@
+{
+  "files.exclude": {
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/.git": true
+  },
+  "files.eol": "\n",
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/*.code-search": true
+  },
+  // ------------------------------
+  // Theme
+  // ------------------------------
+  "workbench.colorTheme": "Night Owl",
+  "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
+  "editor.semanticHighlighting.enabled": false,
+  // ------------------------------
+  // Font
+  // ------------------------------
+  "editor.fontFamily": "'MonoLisa', 'Dank Mono', 'Fira Code', monospace",
+  "editor.fontLigatures": "'frac' on, 'liga' on, 'calt' on, 'zero' on, 'ss01' on, 'ss02' on, 'ss06' on, 'ss07' on, 'ss08' on, 'ss09' on, 'ss11' on, 'ss12'",
+  "editor.fontSize": 14,
+  "editor.fontWeight": 400,
+  "editor.lineHeight": 24,
+  "editor.tabSize": 4,
+  // ------------------------------
+  // UI
+  // ------------------------------
+  "editor.minimap.enabled": false,
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.smoothScrolling": true,
+  "explorer.compactFolders": false,
+  "breadcrumbs.enabled": true,
+  "window.newWindowDimensions": "maximized",
+  "window.openFoldersInNewWindow": "off",
+  "window.restoreWindows": "none",
+  "window.zoomLevel": 0,
+  "workbench.sideBar.location": "right",
+  "workbench.activityBar.location": "bottom",
+  "workbench.tree.renderIndentGuides": "onHover",
+  "workbench.settings.editor": "json",
+  "workbench.startupEditor": "none",
+  "workbench.editor.closeOnFileDelete": true,
+  "workbench.editor.revealIfOpen": true,
+  "workbench.tree.indent": 14,
+  "workbench.statusBar.visible": false,
+  // ------------------------------
+  // Autocomplete
+  // ------------------------------
+  "editor.inlineSuggest.enabled": true,
+  "editor.tabCompletion": "on",
+  "editor.snippetSuggestions": "top",
+  // ------------------------------
+  // Brackets
+  // ------------------------------
+  "editor.bracketPairColorization.enabled": true,
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.guides.bracketPairsHorizontal": "active",
+  "editor.guides.highlightActiveBracketPair": true,
+  // ------------------------------
+  // Formatting
+  // ------------------------------
+  "editor.formatOnSave": false,
+  "editor.formatOnSaveMode": "modificationsIfAvailable",
+  // ------------------------------
+  // Terminal
+  // ------------------------------
+  "terminal.integrated.fontFamily": "'MonoLisa', 'Symbols Nerd Font'",
+  "terminal.integrated.tabs.enabled": false,
+  // ------------------------------
+  // File Associations for Syntax Highlighting
+  // ------------------------------
+  "files.associations": {
+    "**/.chezmoitemplates/**": "shellscript",
+    "*.sh.tmpl": "shellscript"
+  },
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.analysis.extraPaths": ["${workspaceFolder}/.venv"]
+}

@@ -1,0 +1,16 @@
+_log TRACE "==> 📜 Configure MacOS [General]"
+
+osascript -e 'tell application "System Preferences" to quit'
+
+sudo -v
+
+# Background loop to keep sudo session alive, refreshing every 60 seconds.
+# Checks if the parent process is running; exits if the parent terminates.
+while true; do 
+  sudo -n true; 
+  sleep 60; 
+  kill -0 "$$" || exit; 
+done 2>/dev/null &.
+
+_log TRACE "=====> Disable the sound effects on boot"
+sudo nvram SystemAudioVolume=" "

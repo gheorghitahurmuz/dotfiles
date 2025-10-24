@@ -1,0 +1,27 @@
+# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
+
+# [[- $choicesDeviceTypes := list "personal" "work" -]]
+# [[- $deviceType := promptChoice "What type of host are you on" $choicesDeviceTypes -]]
+# [[- $name := promptString "Your name" "Gheorghita Hurmuz" -]]
+# [[- $email := promptString "Your email" "hurmuz.gheorghita@pm.me" -]]
+# [[- $bwUsername := promptString "Your username for bitwarden" "hurmuz.gheorghita@pm.me" -]]
+
+progress = true
+
+[data]
+    deviceType = # [[ $deviceType | quote ]]
+    name = # [[ $name | quote ]]
+    email = # [[ $email | quote ]]
+
+[bitwarden]
+    command = # [[ if eq .chezmoi.arch "arm64" ]] "/opt/homebrew/bin/bw" # [[ else ]] "/usr/local/bin/bw" # [[ end ]]
+
+[scriptEnv]
+    BITWARDEN_EMAIL = # [[ $bwUsername | quote ]]
+
+[edit]
+    command = "code"
+    args = ["--new-window"]
+
+[warnings]
+    configFileTemplateHasChanged = false

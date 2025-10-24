@@ -1,0 +1,24 @@
+_log() {
+    local type="$1"
+    shift
+    local message="$@"
+
+    case "$type" in
+        ERROR)
+            tput bold; tput setaf 1
+            ;;
+        DEBUG|TRACE)
+            tput bold; tput setaf 4
+            ;;
+        SUCCESS)
+            tput bold; tput setaf 2
+            ;;
+        *)
+            tput bold; tput setaf 7
+            ;;
+    esac
+
+    echo "$message"
+
+    tput sgr0
+}

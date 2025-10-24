@@ -1,0 +1,6 @@
+# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
+# [[- if eq .deviceType "personal" -]]
+# [[- (bitwardenAttachment "id_rsa"  "764666e7-4df5-4211-a917-ac5e00a3506e") -]]
+# [[- else -]]
+# [[- (bitwardenAttachment "id_ed25519"  "e7dd18d4-647a-476a-b76e-b20b007413b2") -]]
+# [[- end -]]

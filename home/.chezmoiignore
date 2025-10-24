@@ -1,0 +1,15 @@
+{{ if ne .chezmoi.os "darwin" }}
+.chezmoiscripts/darwin/**
+.warp
+Library/Application Support/Code/User/settings.json
+{{ end }}
+
+{{ if ne .chezmoi.os "linux" }}
+.chezmoiscripts/linux/**
+./.config/Code/User/settings.json
+{{ end }}
+
+vscode/**
+**/.DS_Store
+**/.bash_history
+**/.zsh_history

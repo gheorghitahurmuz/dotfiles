@@ -1,0 +1,96 @@
+# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
+#!/usr/bin/env bash
+
+# [[ includeTemplate "log_message" . ]]
+# [[ includeTemplate "darwin/homebrew_path" . ]]
+
+_log TRACE "==> 📜 Install Homebrew packages"
+
+brew update
+brew upgrade
+
+brew bundle --file=/dev/stdin <<EOF
+brew "bat"
+brew "bitwarden-cli"
+brew "chezmoi"
+brew "coreutils"
+brew "curl"
+brew "eza"
+brew "ffmpeg"
+brew "findutils"
+brew "fzf"
+brew "gawk"
+brew "gh"
+brew "git"
+brew "git-lfs"
+brew "gnu-sed"
+brew "gnu-tar"
+brew "graphviz"
+brew "grep"
+brew "gpg"
+brew "imagemagick"
+brew "jq"
+brew "mas"
+brew "mise"
+brew "mitmproxy"
+brew "moreutils"
+brew "neovim"
+brew "openssh"
+brew "rclone"
+brew "ripgrep"
+brew "rsync"
+brew "sheldon"
+brew "starship"
+brew "tree"
+brew "uv"
+brew "wget"
+brew "zoxide"
+brew "zsh"
+
+cask "font-fira-code"
+cask "font-fira-code-nerd-font"
+cask "font-symbols-only-nerd-font"
+
+cask "bitwarden"
+cask "figma"
+cask "firefox"
+cask "git-credential-manager"
+cask "google-chrome"
+cask "proton-mail"
+cask "raycast"
+cask "sensei"
+cask "visual-studio-code"
+cask "warp"
+
+# [[ if eq .deviceType "personal" ]]
+cask "cleanmymac"
+cask "discord"
+cask "kindle"
+cask "netnewswire"
+cask "protonvpn"
+cask "transmission"
+# [[ end ]]
+
+vscode "eamodio.gitlens"
+vscode "monokai.theme-monokai-pro-vscode"
+vscode "sdras.night-owl"
+vscode "streetsidesoftware.code-spell-checker"
+vscode "usernamehw.errorlens"
+vscode "wayou.vscode-todo-highlight"
+vscode "yoavbls.pretty-ts-errors"
+
+# [[ if eq .deviceType "personal" ]]
+vscode "EditorConfig.EditorConfig"
+vscode "esbenp.prettier-vscode"
+vscode "golang.go"
+vscode "shopify.ruby-extensions-pack"
+vscode "shopify.ruby-lsp"
+# [[ end ]]
+
+mas "Anybox", id: 1593408455
+mas "Bear", id: 1091189122
+mas "Parallels Desktop", id: 1085114709
+mas "The Unarchiver", id: 425424353
+EOF
+
+brew cleanup
