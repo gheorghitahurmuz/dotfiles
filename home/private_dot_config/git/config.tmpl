@@ -44,3 +44,24 @@
     recent = "!git branch --sort=-committerdate | fzf --header Checkout | xargs git checkout"
     fomo = "!f() { git fetch origin \"$1\" && git rebase origin/\"$1\"; }; f"
     wip = !git stage --all && git ls-files --deleted -z | xargs -r0 git rm &&  git commit -m 'wip'
+    please = push --force-with-lease --force-if-includes
+    wta = "!f() { \
+        ROOT=$(git rev-parse --show-toplevel); \
+        REPO_NAME=$(basename \"$ROOT\"); \
+        WT_DIR=$(dirname \"$ROOT\")/${REPO_NAME}-worktrees; \
+        mkdir -p \"$WT_DIR\"; \
+        if git show-ref --verify --quiet refs/heads/\"$1\"; then \
+            git worktree add \"$WT_DIR/$1\" \"$1\"; \
+        else \
+            BASE_BRANCH=\"${2:-HEAD}\"; \
+            git worktree add -b \"$1\" \"$WT_DIR/$1\" \"$BASE_BRANCH\"; \
+        fi; \
+    }; f"
+     wtr = "!f() { \
+        ROOT=$(git rev-parse --show-toplevel); \
+        REPO_NAME=$(basename \"$ROOT\"); \
+        WT_DIR=$(dirname \"$ROOT\")/${REPO_NAME}-worktrees; \
+        git worktree remove \"$WT_DIR/$1\"; \
+    }; f"
+    wtl = worktree list
+
