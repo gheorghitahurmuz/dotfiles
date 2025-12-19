@@ -46,7 +46,6 @@ cask "ghostty"
 cask "git-credential-manager"
 cask "google-chrome"
 cask "mitmproxy"
-cask "proton-mail"
 cask "visual-studio-code"
 
 vscode "eamodio.gitlens"
