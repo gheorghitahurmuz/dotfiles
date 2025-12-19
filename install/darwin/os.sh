@@ -132,12 +132,12 @@ function defaults_screencapture() {
 
 function defaults_dock() {
     # Move Dock to the left side of the screen
-    defaults write com.apple.dock "orientation" -string "left"
+    defaults write com.apple.dock "orientation" -string "bottom"
 
     # Automatically hide and show the Dock
     defaults write com.apple.dock autohide -bool true
     # Set the icon size of Dock items to 30 pixels
-    defaults write com.apple.dock tilesize -int 30
+    defaults write com.apple.dock tilesize -int 56
 
     # Remove all the icons in the Dock
     defaults write com.apple.dock persistent-apps -array ""
