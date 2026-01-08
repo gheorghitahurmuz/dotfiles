@@ -43,31 +43,35 @@ cask "bitwarden"
 cask "figma"
 cask "firefox"
 cask "ghostty"
-cask "git-credential-manager"
 cask "google-chrome"
 cask "mitmproxy"
-cask "visual-studio-code"
-
-vscode "eamodio.gitlens"
-vscode "EditorConfig.EditorConfig"
-vscode "monokai.theme-monokai-pro-vscode"
-vscode "sdras.night-owl"
-vscode "streetsidesoftware.code-spell-checker"
-vscode "usernamehw.errorlens"
-vscode "wayou.vscode-todo-highlight"
 
 mas "Bear", id: 1091189122
-mas "Budget Flow", id: 1640091876
-mas "DjVu Reader Pro", id: 895264364
-mas "Kindle", id: 302584613
 mas "The Unarchiver", id: 425424353
 
 if ENV["HOMEBREW_DOTFILE_PERSONAL_DEVICE"] == "true" 
+    cask "zed"
+
+    mas "Budget Flow", id: 1640091876
+    mas "DjVu Reader Pro", id: 895264364
+    mas "Kindle", id: 302584613
+
     cask "anki"
     cask "cleanmymac"
     cask "iina"
     cask "netnewswire"
     cask "protonvpn"
     cask "transmission"
+    cask "streamio"
+else
+    cask "visual-studio-code"
+
+    vscode "eamodio.gitlens"
+    vscode "EditorConfig.EditorConfig"
+    vscode "monokai.theme-monokai-pro-vscode"
+    vscode "sdras.night-owl"
+    vscode "streetsidesoftware.code-spell-checker"
+    vscode "usernamehw.errorlens"
+    vscode "wayou.vscode-todo-highlight"
 end
 
