@@ -1,3 +1,5 @@
+# chezmoi:template:left-delimiter="# [[" right-delimiter="]]"
+
 ########################################
 # Base Configuration
 ########################################
@@ -66,9 +68,18 @@ function _general() {
     setopt INTERACTIVE_COMMENTS
     setopt SHARE_HISTORY
 
+    # [[ if eq .is_personal "true" ]]
+    export VISUAL="zed"
+    export EDITOR="zed"
+    # [[ else ]]
+    export VISUAL="nvim"
+    export EDITOR="nvim"
+    # [[ end ]]
+
     export PATH="$HOME/.local/bin:$PATH"
     alias reload_zsh="source $HOME/.zshrc"
     alias git_root='cd $(git rev-parse --show-toplevel)'
+    alias open_code="${EDITOR}"
 }
 zsh-defer _general
 """
@@ -92,10 +103,7 @@ function _brew() {
     if command -v brew &> /dev/null; then
         export HOMEBREW_CASK_OPTS="--no-quarantine"
         export HOMEBREW_BUNDLE_FILE="${HOME}/.Brewfile"
-    fi
-
-    if [[ -n "${DOTFILE_PERSONAL_DEVICE:-}" ]]; then
-        export HOMEBREW_DOTFILE_PERSONAL_DEVICE=$DOTFILE_PERSONAL_DEVICE
+        export HOMEBREW_DOTFILE_PERSONAL_DEVICE=# [[ .is_personal | quote ]]
     fi
 }
 zsh-defer _brew
@@ -152,8 +160,6 @@ zsh-defer _bat
 inline = """
 function _nvim() {
     if command -v nvim &> /dev/null; then
-        export VISUAL="nvim"
-        export EDITOR="nvim"
         export MANPAGER="nvim +Man!"
         alias vim=nvim
     fi
@@ -195,4 +201,3 @@ function _custom_config() {
 }
 zsh-defer _custom_config
 """
-

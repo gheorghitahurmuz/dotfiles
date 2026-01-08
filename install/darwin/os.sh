@@ -25,7 +25,7 @@ function defaults_ui() {
 function defaults_language() {
     defaults write ".GlobalPreferences_m" AppleLanguages -array en-US ro-RO
     defaults write -globalDomain AppleLanguages -array en-US ro-RO
-    
+
     if sudo -n true 2>/dev/null; then
         sudo systemsetup -settimezone "Europe/Bucharest" >/dev/null
     else
@@ -46,7 +46,7 @@ function defaults_keyboard() {
    # Remap Caps Lock to Control (Note: resets on reboot without additional setup)
     hidutil property --set \
         '{"UserKeyMapping": [{"HIDKeyboardModifierMappingSrc": 0x700000039, "HIDKeyboardModifierMappingDst": 0x7000000e0 }] }' >/dev/null
-    
+
     echo "    Caps Lock → Control mapping active for this session only"
     echo "    To persist across reboots, use System Settings > Keyboard > Modifier Keys"
 
@@ -161,7 +161,13 @@ function defaults_dock() {
 
     local dock_apps=()
     [[ -d "/Applications/Google Chrome.app" ]] && dock_apps+=("$(dock_item "/Applications/Google Chrome.app")")
-    [[ -d "/Applications/Visual Studio Code.app" ]] && dock_apps+=("$(dock_item "/Applications/Visual Studio Code.app")")
+
+    if [[ "${DOTFILE_PERSONAL_DEVICE:-}" == "true" ]]; then
+        [[ -d "/Applications/Zed.app" ]] && dock_apps+=("$(dock_item "/Applications/Zed.app")")
+    else
+        [[ -d "/Applications/Visual Studio Code.app" ]] && dock_apps+=("$(dock_item "/Applications/Visual Studio Code.app")")
+    fi
+
 
     if [[ ${#dock_apps[@]} -gt 0 ]]; then
         defaults write com.apple.dock persistent-apps -array "${dock_apps[@]}"
