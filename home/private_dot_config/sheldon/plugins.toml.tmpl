@@ -91,6 +91,11 @@ inline = """
 function _brew() {
     if command -v brew &> /dev/null; then
         export HOMEBREW_CASK_OPTS="--no-quarantine"
+        export HOMEBREW_BUNDLE_FILE="${HOME}/.Brewfile"
+    fi
+
+    if [[ -n "${DOTFILE_PERSONAL_DEVICE:-}" ]]; then
+        export HOMEBREW_DOTFILE_PERSONAL_DEVICE=$DOTFILE_PERSONAL_DEVICE
     fi
 }
 zsh-defer _brew
