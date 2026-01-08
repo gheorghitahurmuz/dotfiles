@@ -46,6 +46,7 @@ cask "ghostty"
 cask "google-chrome"
 cask "mitmproxy"
 
+mas "Anybox", id: 1593408455
 mas "Bear", id: 1091189122
 mas "The Unarchiver", id: 425424353
 
@@ -55,6 +56,7 @@ if ENV["HOMEBREW_DOTFILE_PERSONAL_DEVICE"] == "true"
     mas "Budget Flow", id: 1640091876
     mas "DjVu Reader Pro", id: 895264364
     mas "Kindle", id: 302584613
+    mas "paperLESS vTOKEN", id: 6667100978
 
     cask "anki"
     cask "cleanmymac"
