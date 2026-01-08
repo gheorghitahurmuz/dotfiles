@@ -17,6 +17,7 @@ macos-hidden = "always"
 theme = "Night Owl"
 font-family = "FiraCode Nerd Font Mono"
 
+custom-shader = ~/.config/ghostty/shaders/cursor_tail.glsl
 cursor-style-blink = false
 mouse-hide-while-typing = true
 
@@ -38,5 +39,3 @@ quick-terminal-screen = "mouse"
 quick-terminal-position = "top"
 quick-terminal-size = 50%
 quick-terminal-animation-duration = 0
-
-
