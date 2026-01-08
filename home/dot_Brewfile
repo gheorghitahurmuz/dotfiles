@@ -64,7 +64,7 @@ if ENV["HOMEBREW_DOTFILE_PERSONAL_DEVICE"] == "true"
     cask "netnewswire"
     cask "protonvpn"
     cask "transmission"
-    cask "streamio"
+    cask "stremio"
 else
     cask "visual-studio-code"
 
