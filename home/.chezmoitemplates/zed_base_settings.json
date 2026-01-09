@@ -1,0 +1,51 @@
+{
+    "disable_ai": true,
+    "collaboration_panel": {
+        "dock": null,
+        "button": false
+    },
+    "outline_panel": {
+        "dock": null,
+        "button": false
+    },
+    "project_panel": {
+        "dock": "right",
+        "default_width": 400,
+        "auto_fold_dirs": false
+    },
+    "git_panel": {
+        "dock": "right",
+        "default_width": 400
+    },
+    "terminal": {
+        "font_family": "MonoLisa",
+        "font_fallbacks": ["Symbols Nerd Font"]
+    },
+
+    "base_keymap": "VSCode",
+    "minimap": {
+        "show": "never"
+    },
+    "cursor_blink": true,
+    "buffer_font_weight": 400.0,
+    "buffer_font_fallbacks": ["Fira Code", ".ZedMono"],
+    "buffer_font_family": "MonoLisa",
+    "file_types": {
+        "shellscript": ["**/.chezmoitemplates/**", "*.sh.tmpl"]
+    },
+    "colorize_brackets": true,
+    "show_edit_predictions": true,
+    "tab_size": 4,
+    "icon_theme": {
+        "mode": "system",
+        "light": "Zed (Default)",
+        "dark": "Zed (Default)"
+    },
+    "ui_font_size": 16,
+    "buffer_font_size": 14.0,
+    "theme": {
+        "mode": "system",
+        "light": "Night Owl Light",
+        "dark": "Night Owl Dark"
+    }
+}
