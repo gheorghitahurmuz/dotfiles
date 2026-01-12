@@ -1,4 +1,6 @@
 {
+    "relative_line_numbers": "enabled",
+    "vim_mode": true,
     "disable_ai": true,
     "collaboration_panel": {
         "dock": null,
