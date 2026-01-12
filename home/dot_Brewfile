@@ -40,6 +40,7 @@ cask "font-fira-code-nerd-font"
 cask "font-symbols-only-nerd-font"
 
 cask "bitwarden"
+cask "cleanmymac"
 cask "figma"
 cask "firefox"
 cask "ghostty"
@@ -48,9 +49,10 @@ cask "mitmproxy"
 
 mas "Anybox", id: 1593408455
 mas "Bear", id: 1091189122
+mas "Magnet", id: 441258766
 mas "The Unarchiver", id: 425424353
 
-if ENV["HOMEBREW_DOTFILE_PERSONAL_DEVICE"] == "true" 
+if ENV["HOMEBREW_DOTFILE_PERSONAL_DEVICE"] == "true"
     cask "zed"
 
     mas "Budget Flow", id: 1640091876
@@ -59,7 +61,6 @@ if ENV["HOMEBREW_DOTFILE_PERSONAL_DEVICE"] == "true"
     mas "paperLESS vTOKEN", id: 6667100978
 
     cask "anki"
-    cask "cleanmymac"
     cask "iina"
     cask "netnewswire"
     cask "protonvpn"
@@ -76,4 +77,3 @@ else
     vscode "usernamehw.errorlens"
     vscode "wayou.vscode-todo-highlight"
 end
-
