@@ -102,7 +102,7 @@ inline = """
 function _brew() {
     if command -v brew &> /dev/null; then
         export HOMEBREW_CASK_OPTS="--no-quarantine"
-        export HOMEBREW_BUNDLE_FILE="${HOME}/.Brewfile"
+        export HOMEBREW_BUNDLE_FILE="${HOME}/.config/Brewfile"
         export HOMEBREW_DOTFILE_PERSONAL_DEVICE=# [[ .is_personal | quote ]]
     fi
 }
