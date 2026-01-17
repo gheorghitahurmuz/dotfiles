@@ -9,7 +9,7 @@ fi
 function detect_homebrew_path() {
     local arch
     arch=$(uname -m)
-    
+
     if [[ "$arch" == "arm64" ]]; then
         echo "/opt/homebrew/bin/brew"
     elif [[ "$arch" == "x86_64" ]]; then
@@ -25,10 +25,10 @@ function _brew() {
         command brew "$@"
         return $?
     fi
-    
+
     local brew_path
     brew_path=$(detect_homebrew_path) || return 1
-    
+
     if [[ -x "$brew_path" ]]; then
         "$brew_path" "$@"
         return $?
@@ -53,7 +53,7 @@ function configure() {
         export HOMEBREW_DOTFILE_PERSONAL_DEVICE=$DOTFILE_PERSONAL_DEVICE
         echo "Personal device flag set: $DOTFILE_PERSONAL_DEVICE"
     fi
-    
+
     # Set up Homebrew environment (PATH, etc.) for this script's session
     if ! command -v brew &>/dev/null; then
         echo "Setting up Homebrew environment..."
@@ -64,13 +64,13 @@ function configure() {
 
 function verify_brewfile() {
     local brewfile="${HOMEBREW_BUNDLE_FILE:-$HOME/.Brewfile}"
-    
+
     if [[ ! -f "$brewfile" ]]; then
         echo "Error: Brewfile not found at $brewfile" >&2
         echo "Create one with: brew bundle dump --global" >&2
         return 1
     fi
-    
+
     echo "Using Brewfile: $brewfile"
 }
 
@@ -79,14 +79,14 @@ function install_apps() {
     echo "Installing applications from Brewfile..."
     echo "This may take a while..."
     echo ""
-    
+
     # Temporarily disable exit on error to capture brew bundle's exit code
     local exit_code=0
     set +e
-    _brew bundle --global --force
+    _brew bundle --force
     exit_code=$?
     set -e
-    
+
     if [[ $exit_code -eq 0 ]]; then
         echo "All applications installed successfully"
         return 0
@@ -111,14 +111,14 @@ function cleanup() {
 function main() {
     echo "=== Homebrew Bundle Installation ==="
     echo ""
-    
+
     verify_homebrew || exit 1
     configure || exit 1
     verify_brewfile || exit 1
     local install_failed=0
     install_apps || install_failed=1
     cleanup || true
-    
+
     echo ""
     if [[ $install_failed -eq 0 ]]; then
         echo "=== Installation Complete ==="
