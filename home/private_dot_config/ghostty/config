@@ -7,7 +7,6 @@ window-padding-x = 16
 window-padding-y = 16
 window-padding-balance = true
 
-macos-titlebar-style = "tabs"
 macos-hidden = "always"
 
 ########################################
@@ -39,3 +38,31 @@ quick-terminal-screen = "mouse"
 quick-terminal-position = "top"
 quick-terminal-size = 50%
 quick-terminal-animation-duration = 0
+
+# ── Unbind Ghostty native splits/tabs ─────
+# tmux owns all of this
+keybind = cmd+d=unbind
+keybind = cmd+shift+d=unbind
+keybind = cmd+t=unbind
+keybind = cmd+shift+t=unbind
+keybind = cmd+w=unbind
+
+# Unbind cmd+1-9 tab switching (tmux handles windows)
+keybind = cmd+1=unbind
+keybind = cmd+2=unbind
+keybind = cmd+3=unbind
+keybind = cmd+4=unbind
+keybind = cmd+5=unbind
+keybind = cmd+6=unbind
+keybind = cmd+7=unbind
+keybind = cmd+8=unbind
+keybind = cmd+9=unbind
+
+# ── Keep OS-level actions only ────────────
+keybind = cmd+n=new_window
+keybind = ctrl+shift+w=close_window
+keybind = cmd+c=copy_to_clipboard
+keybind = cmd+v=paste_from_clipboard
+
+# ── Launch ────────────────────────────────
+command = ~/.config/ghostty/tmux.sh

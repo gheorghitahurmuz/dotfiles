@@ -1,5 +1,4 @@
-# chezmoi:template:left-delimiter="# [[" right-delimiter=]]
-# [[- if eq .chezmoi.arch "arm64" -]]
-eval "$(/opt/homebrew/bin/brew shellenv)"
-# [[- end -]]
-
+# Load login-shell fragments managed under ~/.config/zsh/profile.d.
+for file in ~/.config/zsh/profile.d/*.zsh(N); do
+    source "$file"
+done

@@ -1,5 +1,4 @@
-if command -v sheldon &> /dev/null; then
-    eval "$(sheldon source)"
-else
-    echo "You don't have sheldon installed"
-fi
+# Load interactive-shell fragments managed under ~/.config/zsh/rc.d.
+for file in ~/.config/zsh/rc.d/*.zsh(N); do
+    source "$file"
+done
