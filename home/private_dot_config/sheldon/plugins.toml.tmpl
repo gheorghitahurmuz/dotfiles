@@ -186,6 +186,16 @@ function _mise() {
 zsh-defer _mise
 """
 
+[plugins.bun]
+inline = """
+function _bun() {
+    export BUN_INSTALL="$HOME/.bun"
+    export PATH="$BUN_INSTALL/bin:$PATH"
+    [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+}
+zsh-defer _bun
+"""
+
 
 ########################################
 # Custom Local Configuration

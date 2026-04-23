@@ -1,3 +1,6 @@
+auto-update-channel = tip
+split-inherit-working-directory = false
+
 ########################################
 # Window & Layout
 ########################################
