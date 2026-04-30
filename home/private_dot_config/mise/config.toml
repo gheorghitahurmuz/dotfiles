@@ -4,6 +4,7 @@ python = 'latest'
 ruby = 'latest'
 go = 'latest'
 uv = "latest"
+dotnet = "8"
 
 [settings]
 not_found_auto_install = true
