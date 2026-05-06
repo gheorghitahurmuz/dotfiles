@@ -177,6 +177,11 @@ function defaults_dock() {
     fi
 }
 
+function defaults_hammerspoon() {
+    # Point Hammerspoon at the chezmoi-managed config under ~/.config
+    defaults write org.hammerspoon.Hammerspoon MJConfigFile "${HOME}/.config/hammerspoon/init.lua"
+}
+
 function misc() {
     # Disable the sound effects on boot
     sudo nvram SystemAudioVolume=" "
@@ -223,6 +228,7 @@ function main() {
     defaults_finder
     defaults_screencapture
     defaults_dock
+    defaults_hammerspoon
     misc
 
     kill_affected_applications
