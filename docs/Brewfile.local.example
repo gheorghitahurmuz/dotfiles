@@ -1,0 +1,17 @@
+# Copy to ~/.config/Brewfile.local and customize for this Mac.
+tap "openai/tools", trusted: { formulae: ["tart", "softnet"] }
+
+mas "DjVu Reader Pro", id: 895264364
+mas "Kindle", id: 302584613
+mas "paperLESS vTOKEN", id: 6667100978
+
+brew "openai/tools/tart", trusted: true
+
+cask "anki"
+cask "chatgpt"
+cask "claude-code"
+cask "iina"
+cask "netnewswire"
+cask "protonvpn"
+cask "transmission"
+cask "stremio"
