@@ -6,13 +6,6 @@ Reapply preferences:
 bash scripts/macos.sh
 ```
 
-Inspect failed wallpaper, timezone, and startup sound checks without writing settings:
-
-```sh
-sudo -v
-bash scripts/diagnose-macos.sh
-```
-
 - Screenshots go to `~/Pictures`; desktop icons and widgets are hidden.
 - Dock apps are replaced only when their ordered paths differ.
 - Trash items are removed after 30 days.

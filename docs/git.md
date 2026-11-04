@@ -44,4 +44,4 @@ gh auth refresh --hostname github.com --scopes "workflow,read:packages"
 ```
 
 With multiple accounts, select one using `gh auth switch --hostname github.com`.
-The credential helper uses HTTPS and assumes `/opt/homebrew/bin/gh`.
+The credential helper uses HTTPS and runs `gh` from `PATH`.

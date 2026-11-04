@@ -1,0 +1,33 @@
+name: Check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: macos-latest
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: 1
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install tools
+        run: brew install shellcheck stow
+
+      - name: Check shell syntax
+        run: |
+          for file in install.sh scripts/*.sh; do
+            /bin/bash -n "$file"
+          done
+          for file in packages/zsh/.zshenv packages/zsh/.zshrc; do
+            zsh -n "$file"
+          done
+
+      - name: Run ShellCheck
+        run: shellcheck install.sh scripts/*.sh
+
+      - name: Simulate Stow in a temporary home
+        run: |
+          home="$(mktemp -d)"
+          HOME="$home" bash scripts/doctor.sh

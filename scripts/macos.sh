@@ -310,7 +310,7 @@ dock_item() {
                         <key>_CFURLStringType</key><integer>0</integer>
                     </dict>
             </dict>
-    </dict>', "${app_file_path}"
+    </dict>' "${app_file_path}"
 }
 
 dock_paths_match() {

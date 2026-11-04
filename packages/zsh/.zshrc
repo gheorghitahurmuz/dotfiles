@@ -8,14 +8,12 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_VERIFY
-setopt INC_APPEND_HISTORY
 setopt INTERACTIVE_COMMENTS
 setopt SHARE_HISTORY
 
 alias reload_zsh='exec zsh'
 alias git_root='cd "$(git rev-parse --show-toplevel)"'
 
-export HOMEBREW_CASK_OPTS="--no-quarantine"
 export HOMEBREW_BUNDLE_FILE="${HOME}/.config/Brewfile"
 
 if [[ -x /opt/homebrew/bin/brew ]]; then

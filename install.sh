@@ -30,23 +30,16 @@ load_homebrew() {
     fi
 }
 
-ensure_git() {
-    if command -v git >/dev/null 2>&1; then
-        return
-    fi
-
-    echo "Installing Git..."
-    brew install git
-}
-
 ensure_dotfiles_repo() {
-    local script_dir
-    script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-    if [[ -f "$script_dir/.stowrc" && -d "$script_dir/packages" ]]; then
-        validate_repo "$script_dir" || return 1
-        printf "%s\n" "$script_dir"
-        return
+    # BASH_SOURCE is empty when the installer runs through bash -c or a pipe.
+    local script_source="${BASH_SOURCE[0]:-}" script_dir
+    if [[ -n "$script_source" ]]; then
+        script_dir="$(cd "$(dirname "$script_source")" && pwd)" || return 1
+        if [[ -f "$script_dir/.stowrc" && -d "$script_dir/packages" ]]; then
+            validate_repo "$script_dir" || return 1
+            printf "%s\n" "$script_dir"
+            return
+        fi
     fi
 
     local repo_dir="${DOTFILES_DIR:-$default_repo_dir}"
@@ -78,7 +71,6 @@ validate_repo() {
         .stowrc \
         packages/homebrew/.config/Brewfile \
         scripts/doctor.sh \
-        scripts/migrate-git-local.sh \
         scripts/macos.sh; do
         if [[ ! -f "$root/$file" ]]; then
             echo "Invalid dotfiles repository: missing $root/$file." >&2
@@ -88,15 +80,16 @@ validate_repo() {
 }
 
 install_homebrew_packages() {
-    local brewfile="$1"
+    local brewfile="$1" mas_ids
 
     if [[ "$(sysctl -n kern.hv_vmm_present 2>/dev/null || true)" == 1 ]]; then
         echo "Virtual machine detected: skipping App Store apps (not verified)."
-        export HOMEBREW_BUNDLE_MAS_SKIP="${HOMEBREW_BUNDLE_MAS_SKIP:-} $(sed -n 's/^mas .*id: //p' "$brewfile")"
+        mas_ids="$(sed -n 's/^mas .*id: //p' "$brewfile")" || return 1
+        export HOMEBREW_BUNDLE_MAS_SKIP="${HOMEBREW_BUNDLE_MAS_SKIP:-} $mas_ids"
     fi
 
     echo "Installing Homebrew packages without upgrading existing packages..."
-    HOMEBREW_CASK_OPTS="--no-quarantine" brew bundle install --no-upgrade --file="$brewfile"
+    brew bundle install --no-upgrade --file="$brewfile"
 }
 
 ensure_stow() {
@@ -136,17 +129,14 @@ main() {
     require_macos
     ensure_homebrew
     load_homebrew
-    ensure_git
     repo_dir="$(ensure_dotfiles_repo)"
     ensure_stow
     bash "$repo_dir/scripts/doctor.sh"
-    bash "$repo_dir/scripts/migrate-git-local.sh" --check
     install_homebrew_packages "$repo_dir/packages/homebrew/.config/Brewfile"
     stow_packages "$repo_dir"
-    bash "$repo_dir/scripts/migrate-git-local.sh"
     bash "$repo_dir/scripts/macos.sh"
 }
 
-if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+if [[ -z "${BASH_SOURCE[0]:-}" || "${BASH_SOURCE[0]}" == "$0" ]]; then
     main "$@"
 fi

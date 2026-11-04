@@ -41,14 +41,17 @@ Read [docs/architecture.md](docs/architecture.md) and the relevant tool notes in
 - Check conflicts before moving data. Preserve tracked and conflicting files;
   replace only links verified to reference the exact source being moved.
 - Avoid `path` as a Zsh variable: it changes `PATH`.
+- `BASH_SOURCE` is empty under `bash -c` and pipes, as in the README installer
+  command. Guard it with `set -u` and exercise that entry point too.
 
 ## Verification
 
 Match checks to the changed behavior and update affected notes. Use temporary
 scripts and isolated environments outside the repository; do not add `tests/`.
 
-- Run `bash -n` or `zsh -n` for changed shell files and relevant configuration
-  syntax checks when available. Report checks that could not run.
+- Run `bash -n` or `zsh -n` for changed shell files, `shellcheck` for Bash
+  scripts, and relevant configuration syntax checks when available. Report checks
+  that could not run. CI repeats these and Doctor in a temporary home.
 - For installation or migration changes, test fresh and previous layouts. Run the
   operation twice; inspect files, links, preserved data, and unnecessary writes or
   restarts. State what was compared: two successful exits do not prove idempotency.
