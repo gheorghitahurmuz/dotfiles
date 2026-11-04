@@ -13,8 +13,7 @@ bash scripts/doctor.sh
 ```
 
 Doctor needs Stow installed and checks all packages together. Blocking issues
-return exit code 1; warnings do not block installation. CI runs Doctor with a
-temporary empty home, along with shell syntax checks and ShellCheck.
+return exit code 1; warnings do not block installation.
 
 Back up and reconcile conflicting files before linking. `stow --adopt` moves
 existing files into the repository and can replace its configuration.

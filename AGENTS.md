@@ -51,7 +51,7 @@ scripts and isolated environments outside the repository; do not add `tests/`.
 
 - Run `bash -n` or `zsh -n` for changed shell files, `shellcheck` for Bash
   scripts, and relevant configuration syntax checks when available. Report checks
-  that could not run. CI repeats these and Doctor in a temporary home.
+  that could not run.
 - For installation or migration changes, test fresh and previous layouts. Run the
   operation twice; inspect files, links, preserved data, and unnecessary writes or
   restarts. State what was compared: two successful exits do not prove idempotency.
