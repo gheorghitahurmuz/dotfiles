@@ -26,6 +26,9 @@ The last command removes packages without confirmation. Zsh sets
 `HOMEBREW_BUNDLE_FILE=~/.config/Brewfile`; that shared Brewfile loads the local
 file when present. In other shells, pass `--file="$HOME/.config/Brewfile"` explicitly.
 
+Doctor reports missing declared packages with `brew bundle check` but does not
+install or update anything. Missing packages are warnings, not blocking issues.
+
 The installer skips upgrades of existing packages. Dependencies may still require
 updates. Run `brew bundle upgrade` explicitly to update declared packages.
 

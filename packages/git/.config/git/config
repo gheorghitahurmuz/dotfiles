@@ -10,8 +10,6 @@
 
 [core]
     editor = nvim
-    ignoreCase = false
-    fileMode = false
     whitespace = trailing-space,space-before-tab
     autocrlf = input
 
@@ -49,8 +47,8 @@
 
 [credential "https://github.com"]
 	helper =
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = !gh auth git-credential
 
 [credential "https://gist.github.com"]
 	helper =
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = !gh auth git-credential

@@ -21,5 +21,4 @@ existing files into the repository and can replace its configuration.
 Configuration targets `~/.config`; a different `XDG_CONFIG_HOME` needs review.
 
 Directory folding is disabled so local files stay outside the repository.
-The installer restows old links and moves untracked Git identity files into the
-real `~/.config/git` directory. Conflicting or tracked files stop migration.
+The installer restows existing links, which unfolds old directory links.

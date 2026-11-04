@@ -28,22 +28,25 @@ check_home() {
 }
 
 check_tools() {
-    local brew_bin tool
+    local brew_bin
 
     # Homebrew may be installed before its shell environment has been loaded.
     for brew_bin in /opt/homebrew/bin/brew /usr/local/bin/brew; do
         if ! command -v brew >/dev/null 2>&1 && [[ -x "$brew_bin" ]]; then
-            export PATH="$(dirname "$brew_bin"):$PATH"
+            PATH="${brew_bin%/*}:$PATH"
         fi
     done
 
-    for tool in brew git; do
-        if command -v "$tool" >/dev/null 2>&1; then
-            ok "$tool is available."
-        else
-            warn "$tool is missing; install.sh will install it."
-        fi
-    done
+    if command -v brew >/dev/null 2>&1; then
+        ok 'brew is available.'
+    else
+        warn 'brew is missing; install.sh will install it.'
+    fi
+    if command -v git >/dev/null 2>&1; then
+        ok 'git is available.'
+    else
+        warn 'git is missing; the Homebrew installer provides it with the Command Line Tools.'
+    fi
 }
 
 check_config_overrides() {
@@ -53,6 +56,24 @@ check_config_overrides() {
     fi
     if [[ -n "${XDG_CONFIG_HOME:-}" && "$XDG_CONFIG_HOME" != "$HOME/.config" ]]; then
         warn "XDG_CONFIG_HOME=$XDG_CONFIG_HOME; dotfiles are linked under $HOME/.config."
+    fi
+}
+
+check_brewfile() {
+    local brewfile="$repo_dir/packages/homebrew/.config/Brewfile"
+    local output
+
+    if ! command -v brew >/dev/null 2>&1; then
+        warn 'Homebrew is missing; Brewfile check skipped.'
+        return 0
+    fi
+
+    # Report missing dependencies only; never install or update.
+    if output="$(HOMEBREW_NO_AUTO_UPDATE=1 brew bundle check --verbose --no-upgrade --file="$brewfile" 2>&1)"; then
+        ok 'Brewfile dependencies are installed.'
+    else
+        warn 'Brewfile dependencies are missing; install.sh will install them:'
+        printf '%s\n' "$output" | sed -n 's/^→ /     /p'
     fi
 }
 
@@ -97,6 +118,7 @@ main() {
     check_home
     check_tools
     check_config_overrides
+    check_brewfile
     check_stow_conflicts
     report_result
 }
