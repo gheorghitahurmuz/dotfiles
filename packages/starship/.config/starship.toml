@@ -1,0 +1,23 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+continuation_prompt = '▶▶ '
+
+command_timeout = 500
+scan_timeout = 30
+
+[line_break]
+disabled = true
+
+[cmd_duration]
+disabled = true
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+
+[package]
+disabled = true
+
+[nodejs]
+disabled = false
