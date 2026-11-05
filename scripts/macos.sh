@@ -32,8 +32,8 @@ normalize_preference() {
     case "$1" in
         -bool)
             case "$2" in
-                true|TRUE|YES|1) echo 1 ;;
-                false|FALSE|NO|0) echo 0 ;;
+                true | TRUE | YES | 1) echo 1 ;;
+                false | FALSE | NO | 0) echo 0 ;;
                 *) printf '%s' "$2" ;;
             esac
             ;;
@@ -76,9 +76,9 @@ write_preference() {
         configuration_failure "Could not verify $domain $key."
     fi
     case "$domain" in
-        com.apple.dock|com.apple.spaces) mark_restart Dock ;;
+        com.apple.dock | com.apple.spaces) mark_restart Dock ;;
         com.apple.finder) mark_restart Finder ;;
-        com.apple.screencapture|com.apple.controlcenter|*/com.apple.controlcenter.plist) mark_restart SystemUIServer ;;
+        com.apple.screencapture | com.apple.controlcenter | */com.apple.controlcenter.plist) mark_restart SystemUIServer ;;
     esac
 }
 
@@ -158,7 +158,7 @@ configure_keyboard_mapping() {
         return 0
     fi
     case "$mapping" in
-        ""|"(null)")
+        "" | "(null)")
             json='[]'
             ;;
         *)
@@ -317,10 +317,10 @@ dock_paths_match() {
     local expected_paths=("$@")
     local snapshot current index count same=1
     snapshot="$(mktemp)"
-    if defaults export com.apple.dock - > "$snapshot"; then
+    if defaults export com.apple.dock - >"$snapshot"; then
         count="$(plutil -extract persistent-apps raw -o - "$snapshot" 2>/dev/null || echo missing)"
         [[ "$count" == "${#expected_paths[@]}" ]] || same=0
-        for ((index=0; index<${#expected_paths[@]}; index++)); do
+        for ((index = 0; index < ${#expected_paths[@]}; index++)); do
             current="$(/usr/libexec/PlistBuddy -c "Print :persistent-apps:$index:tile-data:file-data:_CFURLString" "$snapshot" 2>/dev/null || true)"
             current="${current#file://}"
             current="${current//%20/ }"
