@@ -1,5 +1,6 @@
 .DS_Store
 /nvim.log
 /packages/homebrew/.config/Brewfile.local
+/packages/zsh/.zshrc.local
 /packages/git/.config/git/local.gitconfig
 /packages/git/.config/git/identities/

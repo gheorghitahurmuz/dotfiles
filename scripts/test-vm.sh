@@ -90,9 +90,9 @@ copy_checkout() {
     COPYFILE_DISABLE=1 tar -czf - -C "$root" \
         --exclude='.DS_Store' --exclude='Brewfile.local' \
         --exclude='local.gitconfig' --exclude='identities' \
-        install.sh .stowrc packages scripts | \
+        install.sh .stowrc packages scripts |
         /usr/bin/ssh "${ssh_options[@]}" "$guest" \
-        'export PATH=/usr/bin:/bin:/usr/sbin:/sbin
+            'export PATH=/usr/bin:/bin:/usr/sbin:/sbin
          test ! -e ~/Developer/dotfiles &&
          mkdir -p ~/Developer/dotfiles &&
          tar -xzf - -C ~/Developer/dotfiles'

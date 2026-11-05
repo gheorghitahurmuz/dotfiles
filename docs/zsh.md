@@ -14,6 +14,12 @@ reorder `PATH` before `.zshrc` runs. Scripts cannot rely on `.zshrc` being loade
 
 Keep machine-specific additions in `~/.zshrc.local`.
 
+History and the completion dump live under `XDG_STATE_HOME`
+and `XDG_CACHE_HOME`, not `$HOME`. Tools that ignore XDG still write
+dotfiles to `$HOME`; macOS's `.CFUserTextEncoding` and Finder's `.DS_Store`
+cannot be moved. Angular CLI reads `~/.config/angular/.angular-config.json`
+if it exists.
+
 `Ctrl-f` accepts the full inline autosuggestion without running the command.
 
 Interactive shells load prompt-related setup. Login shells also load session
@@ -54,6 +60,16 @@ at the start of `.zshrc`, open a shell, and run `zprof`.
 Initialize `compinit` once, after setting completion paths. Its normal behavior
 already caches completions. Add lazy loading or other optimizations only after
 measuring a bottleneck.
+
+If `compinit` warns `insecure directories and files`, a completion directory is
+group- or world-writable. Homebrew's `/opt/homebrew/share` is a common cause.
+List the offenders with `compaudit`, then remove group write access:
+
+```sh
+chmod g-w /opt/homebrew/share
+```
+
+Fix the permissions rather than using `compinit -u` or `-C`, which skip the check.
 
 ## Reading notes
 
