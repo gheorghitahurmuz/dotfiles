@@ -10,15 +10,15 @@ git config --file ~/.config/git/identities/personal.gitconfig user.name "Your Na
 git config --file ~/.config/git/identities/personal.gitconfig user.email "you@example.com"
 ```
 
-Map repository directories in `~/.config/git/local.gitconfig`:
+Map repository directories in `~/.config/git/local.gitconfig`. Start from the
+example, which covers personal, dotfiles, and work:
 
-```gitconfig
-[includeIf "gitdir/i:~/Developer/github.com/gheorghitahurmuz/"]
-    path = identities/personal.gitconfig
+```sh
+cp -i docs/local.gitconfig.example ~/.config/git/local.gitconfig
 ```
 
 The trailing slash includes nested repositories. Add a separate identity and
-rule for each client. Use `~/Developer/dotfiles/` to match this repository.
+rule for each client.
 
 Unmatched repositories have no default identity; Git refuses to guess one.
 Check from inside a repository:

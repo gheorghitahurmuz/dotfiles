@@ -1,0 +1,13 @@
+# Copy to ~/.config/git/local.gitconfig and customize for this Mac.
+# Identity files live in ~/.config/git/identities/ (see docs/git.md).
+
+# Personal repositories, including this one.
+[includeIf "gitdir/i:~/Developer/github.com/gheorghitahurmuz/"]
+    path = identities/personal.gitconfig
+
+[includeIf "gitdir/i:~/Developer/dotfiles/"]
+    path = identities/personal.gitconfig
+
+# Work repositories.
+[includeIf "gitdir/i:~/Developer/work/"]
+    path = identities/work.gitconfig
