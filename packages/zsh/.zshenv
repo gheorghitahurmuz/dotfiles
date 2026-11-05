@@ -9,5 +9,3 @@ export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump"
 export NG_CLI_ANALYTICS=false
 export VISUAL="${VISUAL:-nvim}"
 export EDITOR="${EDITOR:-nvim}"
-
-export GH_NPM_REGISTRY_TOKEN=$(gh auth token)
