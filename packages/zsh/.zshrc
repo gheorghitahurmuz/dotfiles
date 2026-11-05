@@ -1,6 +1,10 @@
 typeset -U path
 path=("$HOME/.local/bin" $path)
 
+# macOS /etc/zshrc resets HISTFILE, so it cannot live in .zshenv.
+HISTFILE="$XDG_STATE_HOME/zsh/history"
+mkdir -p "${HISTFILE:h}" "${ZSH_COMPDUMP:h}"
+
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_ALL_DUPS
@@ -23,7 +27,7 @@ elif [[ -x /usr/local/bin/brew ]]; then
 fi
 
 autoload -Uz compinit
-compinit
+compinit -d "$ZSH_COMPDUMP"
 
 if (( $+commands[eza] )); then
     alias ls="eza --grid --color auto --icons --sort=type"

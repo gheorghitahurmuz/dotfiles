@@ -1,3 +1,13 @@
 export LANG="en_US.UTF-8"
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
+export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export LESSHISTFILE=-
+export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump"
+export NG_CLI_ANALYTICS=false
 export VISUAL="${VISUAL:-nvim}"
 export EDITOR="${EDITOR:-nvim}"
+
+export GH_NPM_REGISTRY_TOKEN=$(gh auth token)
