@@ -4,3 +4,5 @@
 /packages/zsh/.zshrc.local
 /packages/git/.config/git/local.gitconfig
 /packages/git/.config/git/identities/
+/packages/rex/
+/docs/rex.md
