@@ -17,8 +17,11 @@ Keep machine-specific additions in `~/.zshrc.local`.
 History and the completion dump live under `XDG_STATE_HOME`
 and `XDG_CACHE_HOME`, not `$HOME`. Tools that ignore XDG still write
 dotfiles to `$HOME`; macOS's `.CFUserTextEncoding` and Finder's `.DS_Store`
-cannot be moved. Angular CLI reads `~/.config/angular/.angular-config.json`
-if it exists.
+cannot be moved. `.zshenv` creates the config directories it exports, because some
+tools (Codex) fail when theirs is missing. Moving a tool's directory also needs
+its absolute paths rewritten in its own config. LM Studio keeps a pointer file in
+`$HOME`, and `~/.agents` is a symlink to `~/.config/agents`. Angular CLI reads
+`~/.config/angular/.angular-config.json` if it exists.
 
 `Ctrl-f` accepts the full inline autosuggestion without running the command.
 
