@@ -14,14 +14,20 @@ Read [docs/architecture.md](docs/architecture.md) and the relevant tool notes in
 - Declare shared software in the Brewfile; keep private and machine-specific
   additions unversioned. Keep upgrades separate: `--no-upgrade` still allows
   required dependency updates and does not pin versions.
+- Private overrides may intentionally live as ignored files inside their Stow
+  package so home paths stay linked. Preserve that layout unless migration is
+  explicitly requested.
 - Preserve idempotency and Doctor's conflict checks. Never automatically overwrite
   or adopt conflicting home files. Run installation, preferences, software removal,
   or home-link changes only when the task calls for those operations.
 
 ## Writing
 
-- Use concise, direct English. README covers installation only. Tool notes contain
-  useful reminders and caveats, not tutorials, inventories, research logs, or history.
+- Use concise, direct English. README covers installation and the Mermaid
+  diagrams of `install.sh` only. Update them whenever the installer's sequence,
+  branches, or exit behavior changes. Do not add diagrams or internals of
+  `scripts/doctor.sh` or `scripts/macos.sh` to README. Tool notes contain useful
+  reminders and caveats, not tutorials, inventories, research logs, or history.
 - Keep architecture abstract: principles and responsibilities, without commands,
   application examples, layouts, or implementation plans. Omit references to
   previous configuration managers.
@@ -43,6 +49,9 @@ Read [docs/architecture.md](docs/architecture.md) and the relevant tool notes in
 - Avoid `path` as a Zsh variable: it changes `PATH`.
 - `BASH_SOURCE` is empty under `bash -c` and pipes, as in the README installer
   command. Guard it with `set -u` and exercise that entry point too.
+- `brew bundle check` exits 1 for missing packages and for a broken Brewfile
+  alike. When output must be parsed, match the smallest stable marker (the `→`
+  lines) instead of full sentences that Homebrew may reword.
 
 ## Verification
 

@@ -30,12 +30,15 @@ load_homebrew() {
     fi
 }
 
-ensure_dotfiles_repo() {
+find_dotfiles_repo() {
+    # Prints the repository path, or nothing when it must be cloned.
     # BASH_SOURCE is empty when the installer runs through bash -c or a pipe.
     local script_source="${BASH_SOURCE[0]:-}" script_dir
     if [[ -n "$script_source" ]]; then
         script_dir="$(cd "$(dirname "$script_source")" && pwd)" || return 1
-        if [[ -f "$script_dir/.stowrc" && -d "$script_dir/packages" ]]; then
+        # Any sign of a checkout means use it; an incomplete one fails here
+        # instead of silently cloning somewhere else.
+        if [[ -e "$script_dir/.git" || -f "$script_dir/.stowrc" || -d "$script_dir/packages" ]]; then
             validate_repo "$script_dir" || return 1
             printf "%s\n" "$script_dir"
             return
@@ -44,16 +47,20 @@ ensure_dotfiles_repo() {
 
     local repo_dir="${DOTFILES_DIR:-$default_repo_dir}"
 
-    if [[ -e "$repo_dir/.git" ]]; then
+    if [[ -e "$repo_dir/.git" || -L "$repo_dir/.git" ]]; then
         validate_repo "$repo_dir" || return 1
         printf "%s\n" "$repo_dir"
         return
     fi
 
-    if [[ -e "$repo_dir" ]]; then
+    if [[ -e "$repo_dir" || -L "$repo_dir" ]]; then
         echo "$repo_dir already exists but is not a Git repository." >&2
-        exit 1
+        return 1
     fi
+}
+
+clone_dotfiles_repo() {
+    local repo_dir="${DOTFILES_DIR:-$default_repo_dir}"
 
     echo "Cloning dotfiles into $repo_dir..." >&2
     mkdir -p "$(dirname "$repo_dir")" || return 1
@@ -127,9 +134,12 @@ main() {
     local repo_dir
 
     require_macos
+    repo_dir="$(find_dotfiles_repo)"
     ensure_homebrew
     load_homebrew
-    repo_dir="$(ensure_dotfiles_repo)"
+    if [[ -z "$repo_dir" ]]; then
+        repo_dir="$(clone_dotfiles_repo)"
+    fi
     ensure_stow
     bash "$repo_dir/scripts/doctor.sh"
     install_homebrew_packages "$repo_dir/packages/homebrew/.config/Brewfile"

@@ -6,6 +6,9 @@ go = 'latest'
 uv = "latest"
 dotnet = "8"
 zig = "0.15.2"
+"npm:portless"="latest"
+"npm:opencode-ai"="latest"
+"npm:@earendil-works/pi-coding-agent"="latest"
 
 [settings]
 not_found_auto_install = true

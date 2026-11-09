@@ -71,9 +71,12 @@ check_brewfile() {
     # Report missing dependencies only; never install or update.
     if output="$(HOMEBREW_NO_AUTO_UPDATE=1 brew bundle check --verbose --no-upgrade --file="$brewfile" 2>&1)"; then
         ok 'Brewfile dependencies are installed.'
-    else
+    elif grep -q '^→ ' <<<"$output"; then
         warn 'Brewfile dependencies are missing; install.sh will install them:'
         printf '%s\n' "$output" | sed -n 's/^→ /     /p'
+    else
+        fail 'Brewfile check failed unexpectedly:'
+        printf '%s\n' "$output" | sed 's/^/     /'
     fi
 }
 
