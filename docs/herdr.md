@@ -3,7 +3,8 @@
 Configuration: `~/.config/herdr/config.toml` for the terminal multiplexer and
 `~/.config/herdr-app/` for the desktop app.
 
-- The Brewfile installs the `herdr` CLI. Install the desktop app separately from
+- Install the `herdr` CLI with Homebrew; it is a machine-specific entry in
+  `~/.config/Brewfile.local`, not the shared Brewfile. Install the desktop app from
   <https://herdr.dev>; it is not a Homebrew cask.
 - Only `settings.json` and `themes/night-owl.json` are linked from `herdr-app`.
   The rest of that directory is runtime state the app owns.
