@@ -14,7 +14,7 @@ zig = "0.15.2"
 not_found_auto_install = true
 go_set_goroot = false
 go_set_gopath = false
-idiomatic_version_file_enable_tools = ["node", "npm", "pnpm", "yarn"]
+idiomatic_version_file_enable_tools = ["node"]
 
 [settings.ruby]
 ruby_install = true
