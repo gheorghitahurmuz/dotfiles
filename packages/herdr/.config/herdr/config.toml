@@ -1,0 +1,36 @@
+onboarding = false
+
+[theme]
+# No built-in Night Owl: tokyo-night is the base, the tokens below recolor it.
+name = "tokyo-night"
+auto_switch = false
+
+[theme.custom]
+panel_bg = "#011627"
+sidebar_bg = "#011627"
+active_row_bg = "#0b2942"
+selection_bg = "#1d3b53"
+text = "#d6deeb"
+accent = "#82aaff"
+red = "#ef5350"
+green = "#22da6e"
+yellow = "#ecc48d"
+blue = "#82aaff"
+teal = "#7fdbca"
+
+[terminal]
+shell_mode = "auto"
+
+[keys]
+prefix = "ctrl+a"
+
+[ui]
+show_agent_labels_on_pane_borders = true
+agent_panel_sort = "spaces"
+
+status_indicators = "symbols"
+[ui.sound]
+enabled = false
+
+[worktrees]
+directory = "~/Developer/worktrees"
