@@ -49,6 +49,9 @@ Read [docs/architecture.md](docs/architecture.md) and the relevant tool notes in
 - Avoid `path` as a Zsh variable: it changes `PATH`.
 - `BASH_SOURCE` is empty under `bash -c` and pipes, as in the README installer
   command. Guard it with `set -u` and exercise that entry point too.
+- `brew bundle check` exits 1 for missing packages and for a broken Brewfile
+  alike. When output must be parsed, match the smallest stable marker (the `→`
+  lines) instead of full sentences that Homebrew may reword.
 
 ## Verification
 
