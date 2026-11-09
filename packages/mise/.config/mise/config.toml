@@ -6,12 +6,15 @@ go = 'latest'
 uv = "latest"
 dotnet = "8"
 zig = "0.15.2"
+"npm:portless"="latest"
+"npm:opencode-ai"="latest"
+"npm:@earendil-works/pi-coding-agent"="latest"
 
 [settings]
 not_found_auto_install = true
 go_set_goroot = false
 go_set_gopath = false
-idiomatic_version_file_enable_tools = ["node"]
+idiomatic_version_file_enable_tools = ["node", "npm", "pnpm", "yarn"]
 
 [settings.ruby]
 ruby_install = true
