@@ -1,0 +1,10 @@
+{
+  "zoom": 1,
+  "sounds": {
+    "enabled": false
+  },
+  "font": "MonoLisa",
+  "ui_font": "MonoLisa",
+  "telemetry": false,
+  "theme": "night-owl"
+}
