@@ -151,23 +151,38 @@ normalize_keyboard_mappings() {
     )'
 }
 
+# hidutil prints one UserKeyMapping value per HID service; merge them into one JSON array.
+read_keyboard_mappings() {
+    local output
+    output="$(hidutil property --get UserKeyMapping)" || return 1
+    printf '%s\n' "$output" | awk '
+        function flush(   inner, probe) {
+            if (!started || block == "(null)") return
+            inner = block
+            sub(/^[ \t\n]*\(/, "", inner)
+            sub(/\)[ \t\n]*$/, "", inner)
+            probe = inner
+            gsub(/[ \t\n]/, "", probe)
+            if (probe != "") merged = merged (merged == "" ? "" : ",") inner
+        }
+        /^[0-9a-fA-F]+[ \t]+UserKeyMapping[ \t]/ {
+            flush()
+            started = 1
+            block = $0
+            sub(/^[0-9a-fA-F]+[ \t]+UserKeyMapping[ \t]+/, "", block)
+            next
+        }
+        started { block = block "\n" $0 }
+        END { flush(); print "(" merged ")" }
+    ' | plutil -convert json -o - -- - | jq -ce 'reduce .[] as $m ([]; if index([$m]) then . else . + [$m] end)'
+}
+
 configure_keyboard_mapping() {
-    local mapping json updated verified
-    if ! mapping="$(hidutil property --get UserKeyMapping)"; then
-        configuration_failure "Could not read keyboard mappings."
+    local json updated verified
+    if ! json="$(read_keyboard_mappings)"; then
+        configuration_failure "Could not read keyboard mappings; existing mappings preserved."
         return 0
     fi
-    case "$mapping" in
-        "" | "(null)")
-            json='[]'
-            ;;
-        *)
-            if ! json="$(printf '%s' "$mapping" | plutil -convert json -o - -- -)"; then
-                configuration_failure "Could not parse keyboard mappings; existing mappings preserved."
-                return 0
-            fi
-            ;;
-    esac
     if ! json="$(printf '%s' "$json" | normalize_keyboard_mappings)"; then
         configuration_failure "Invalid keyboard mapping values; existing mappings preserved."
         return 0
@@ -196,11 +211,7 @@ configure_keyboard_mapping() {
             return 0
         fi
     fi
-    if ! verified="$(hidutil property --get UserKeyMapping)"; then
-        configuration_failure "Could not verify keyboard mappings."
-        return 0
-    fi
-    if ! verified="$(printf '%s' "$verified" | plutil -convert json -o - -- - | normalize_keyboard_mappings)"; then
+    if ! verified="$(read_keyboard_mappings | normalize_keyboard_mappings)"; then
         configuration_failure "Could not verify keyboard mappings."
         return 0
     fi
@@ -374,13 +385,20 @@ configure_dock() {
     fi
 }
 
+# nvram prints the value as %20 on older macOS and as a literal space on newer.
+startup_sound_muted() {
+    local value
+    value="$(nvram SystemAudioVolume 2>/dev/null || true)"
+    [[ "$value" == $'SystemAudioVolume\t%20' || "$value" == $'SystemAudioVolume\t ' ]]
+}
+
 configure_startup_sound() {
     # Compare NVRAM state before and after the write.
-    if [[ "$(nvram SystemAudioVolume 2>/dev/null || true)" != $'SystemAudioVolume\t%20' ]]; then
+    if ! startup_sound_muted; then
         if sudo -n true 2>/dev/null; then
             if ! sudo -n nvram SystemAudioVolume=" "; then
                 configuration_failure "Could not set startup sound volume."
-            elif [[ "$(nvram SystemAudioVolume 2>/dev/null || true)" != $'SystemAudioVolume\t%20' ]]; then
+            elif ! startup_sound_muted; then
                 configuration_failure "Could not verify startup sound volume."
             fi
         else
