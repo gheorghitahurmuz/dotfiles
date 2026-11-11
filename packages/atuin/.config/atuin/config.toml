@@ -9,7 +9,8 @@
 # timezone = "local"
 
 ## enable or disable automatic sync
-# auto_sync = true
+## Keep everything on this machine: threads sync with history and can't be excluded alone.
+auto_sync = false
 
 ## enable or disable automatic update checks
 # update_check = true
@@ -19,7 +20,8 @@
 # update_channel = "stable"
 
 ## address of the sync server
-# sync_address = "https://api.atuin.sh"
+## Nothing listens here, so an accidental `atuin login` or sync fails instead of uploading.
+sync_address = "http://127.0.0.1:9"
 
 ## how often to sync history. note that this is only triggered when a command
 ## is ran, so sync intervals may well be longer
@@ -257,11 +259,11 @@ enter_accept = true
 
 [daemon]
 ## Enables using the daemon to sync.
-# enabled = false
+enabled = true
 
 ## Automatically start and manage the daemon when needed.
 ## Not compatible with `systemd_socket = true`.
-# autostart = false
+autostart = true
 
 ## How often the daemon should sync in seconds
 # sync_frequency = 300
@@ -336,7 +338,7 @@ enter_accept = true
 
 ## Capture threads into the encrypted record store, and sync them like your history.
 ## `atuin config enable threads` turns this on, with the daemon it needs.
-# capture = false
+capture = true
 
 ## Also capture what each tool call was given and returned (commands and their output,
 ## files read and written), with secrets redacted. Off keeps only each tool's name.
