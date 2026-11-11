@@ -65,7 +65,7 @@ if (( $+commands[starship] )); then
 fi
 
 if (( $+commands[atuin] )); then
-    eval "$(atuin init zsh --disable-up-arrow)"
+    eval "$(atuin init zsh)"
 fi
 
 if [[ -f "$HOME/.zshrc.local" && -r "$HOME/.zshrc.local" ]]; then
