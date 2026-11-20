@@ -23,6 +23,7 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export LESSHISTFILE=-
 export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump"
 export NG_CLI_ANALYTICS=false
+export VSCODE_EXTENSIONS="$XDG_DATA_HOME/vscode/extensions"
 export VISUAL="${VISUAL:-nvim}"
 export EDITOR="${EDITOR:-nvim}"
 
@@ -38,6 +39,7 @@ config_dirs=(
   "$ATUIN_HOME"
   "$TART_HOME"
   "$OLLAMA_MODELS"
+  "$VSCODE_EXTENSIONS"
   "${PYTHON_HISTORY:h}"
 )
 
