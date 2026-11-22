@@ -12,37 +12,38 @@ line on each machine (model | 5-hour | 7-day usage):
 }
 ```
 
-English correction: a `UserPromptSubmit` hook reminds Claude on every prompt.
-Add it under `hooks` in `settings.json`:
+English correction rules live once in `~/.config/agents/AGENTS.md`;
+`~/.config/claude/CLAUDE.md` links to that file. The rules apply to user-facing
+replies, excluding subagent reports and generated artifacts.
+
+A `UserPromptSubmit` hook reinforces the rules on each prompt. Merge this into
+`settings.json`, replacing the old English reminder while preserving other
+hooks:
 
 ```json
-"UserPromptSubmit": [
-  {
-    "hooks": [
+{
+  "hooks": {
+    "UserPromptSubmit": [
       {
-        "type": "command",
-        "command": "echo '[REMINDER: correct English mistakes at end of response per CLAUDE.md rules]'"
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat \"${XDG_CONFIG_HOME:-$HOME/.config}/agents/english-reminder.txt\""
+          }
+        ]
       }
     ]
   }
-]
+}
 ```
 
-The hook only points to the rules; put them in `~/.config/claude/CLAUDE.md`:
+The command prints the shared reminder from
+`~/.config/agents/english-reminder.txt`; it does not duplicate the rules.
+Restart Claude Code after editing. The reminder improves consistency but
+cannot guarantee that the model follows the rules.
 
-```markdown
-## English Correction Rules
-
-The user is a Romanian speaker learning English.
-At the end of every reply to the user (not in subagent reports, commits, PRs or tickets), add an "**English**" section.
-If the user made mistakes, format corrections as:
-
-- ❌ original → ✅ correction _(reason)_
-
-If no mistakes, write: "✅ No English issues found in this message."
-Keep it brief — max 3 corrections per message.
-Ignore capitalization (lowercase vs uppercase) and punctuation (periods, question marks, commas); don't report them as mistakes.
-```
+See [shared agent configuration](agents.md) for the Stow links and the other
+harness adapters.
 
 - Needs `jq` (in the Brewfile).
 - Validate after editing: `jq empty ~/.config/claude/settings.json`. Invalid
