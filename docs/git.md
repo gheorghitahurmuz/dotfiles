@@ -30,6 +30,13 @@ git config --show-origin --get user.email
 
 An existing `~/.gitconfig` can override these settings. Review it manually.
 
+## Review changes
+
+Use `git difftool -- path/to/file` for unstaged changes or
+`git difftool --staged -- path/to/file` for staged changes. Neovim opens a
+side-by-side diff. Use `]c` and `[c` to move between hunks and `:qa` to close
+the comparison.
+
 ## GitHub authentication
 
 ```sh

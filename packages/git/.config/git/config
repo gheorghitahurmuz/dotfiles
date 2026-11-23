@@ -13,6 +13,9 @@
     whitespace = trailing-space,space-before-tab
     autocrlf = input
 
+[diff]
+    tool = nvimdiff
+
 [init]
     defaultBranch = main
 
