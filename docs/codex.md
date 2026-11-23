@@ -57,5 +57,11 @@ See [shared agent configuration](agents.md) for the Stow links and Pi/OpenCode
 adapters. Restore other custom hooks and skills separately, reviewing
 machine-specific paths.
 
+Local command approvals live in `~/.config/codex/rules/default.rules`. Restart
+Codex after editing the file. A `rex session rename` prefix rule matches when
+Codex passes the session ID literally. Read `REX_SESSION` in a separate command
+before invoking the rename, since variable expansion makes Codex match the full
+shell command instead.
+
 Keep authentication, conversations, databases, caches, downloaded plugins, and
 project trust state out of Git.
